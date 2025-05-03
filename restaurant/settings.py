@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-cr45y!3-@5mv@msx+zyslv4f$l#a=w8x9^ns444#3-0(p=1zoc
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
+STRIPE_API = "sk_test_51RHwSECLRcanLMxrKDM0YcvzErIGcIXrXzgp0dDE5Rbw34TzwGUuuoTEmWvJKO07yWR6CzzqrXy4gLPl60kmsCNc00pXSsM167"
 
 # Application definition
 

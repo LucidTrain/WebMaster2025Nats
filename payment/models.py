@@ -12,4 +12,4 @@ class paydata(models.Model):
 
 class Cart(models.Model):
     user = models.OneToOneField('auth.User', on_delete=models.CASCADE)
-    productlist = models.Charfield(max_length=512)
+    productlist = models.CharField(max_length=512)
