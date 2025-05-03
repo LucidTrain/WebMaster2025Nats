@@ -15,5 +15,9 @@ def demoUser(request):
     userobj.save()
     user2 = authenticate(username=uuidstr, password=pwuuidstr)
     if user2 is not None:
+        user2.first_name = "Demo"
+        user2.last_name = "User"
+        user2.email = uuidstr + "@example.com"
+        user2.save()
         login(request, user2)
         return redirect('/')
