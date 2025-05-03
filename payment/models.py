@@ -8,3 +8,8 @@ class paydata(models.Model):
     iscomplete = models.BooleanField(default=False)
     stirpe_session_id = models.CharField(max_length=255, blank=True, null=True)
     stripe_link_id = models.CharField(max_length=255, blank=True, null=True)
+
+
+class Cart(models.Model):
+    user = models.OneToOneField('auth.User', on_delete=models.CASCADE)
+    productlist = models.Charfield(max_length=512)
