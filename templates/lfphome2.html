@@ -96,7 +96,7 @@
         .logo-text {
             position: relative;
             z-index: 1;
-            font-family: 'Playfair Display', serif;
+            font-family: 'Bebas Neue', serif;
             font-weight: 700;
             color: #fff;
             font-size: 28px;
@@ -105,7 +105,7 @@
         }
 
         .logo-circle .initials {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Bebas Neue', serif;
             font-weight: 700;
             color: #000;
             font-size: 20px;
@@ -858,177 +858,247 @@
             border: none;
         }
 
-        /* Footer */
-        .footer {
-            padding: 80px 50px 30px;
-            background-color: #111;
-            color: #fff;
-            position: relative;
-            overflow: hidden;
-        }
+/* Footer */
+.footer {
+    padding: 100px 50px 40px;
+    background-color: #111;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Montserrat', sans-serif; /* Complementary font to Bebas Neue */
+}
 
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(212, 175, 55, 0.1), rgba(0, 0, 0, 0) 70%);
-        }
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(212, 175, 55, 0.08), rgba(0, 0, 0, 0) 70%);
+    opacity: 0.8;
+}
 
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 1;
-        }
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    position: relative;
+    z-index: 1;
+}
 
-        .footer-logo {
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-        }
+.footer-logo {
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+}
 
-        .footer-logo .logo-text {
-            font-size: 32px;
-            margin-left: 15px;
-        }
+.footer-logo .logo-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    margin-left: 15px;
+    letter-spacing: 1.5px;
+}
 
-        .footer-logo .logo-circle {
-            width: 50px;
-            height: 50px;
-        }
+.footer-logo .logo-circle {
+    width: 54px;
+    height: 54px;
+    transition: transform 0.3s ease;
+}
 
-        .footer-section {
-            margin-bottom: 30px;
-        }
+.footer-logo:hover .logo-circle {
+    transform: rotate(10deg);
+}
 
-        .footer-section h3 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 22px;
-            margin-bottom: 20px;
-            color: #D4AF37;
-            letter-spacing: 2px;
-            position: relative;
-            display: inline-block;
-        }
+.footer-section {
+    margin-bottom: 30px;
+}
 
-        .footer-section h3::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background-color: #D4AF37;
-            transition: width 0.3s ease;
-        }
+.footer-section h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    margin-bottom: 25px;
+    color: #D4AF37;
+    letter-spacing: 2.5px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 8px;
+}
 
-        .footer-section:hover h3::after {
-            width: 100%;
-        }
+.footer-section h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: #D4AF37;
+    transition: width 0.4s ease;
+}
 
-        .footer-links {
-            list-style: none;
-        }
+.footer-section:hover h3::after {
+    width: 100%;
+}
 
-        .footer-links li {
-            margin-bottom: 15px;
-        }
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
-        .footer-links a {
-            color: #ccc;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            position: relative;
-            padding-left: 15px;
-        }
+.footer-links li {
+    margin-bottom: 18px;
+}
 
-        .footer-links a::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #D4AF37;
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
+.footer-links a {
+    color: #ccc;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-left: 18px;
+    font-size: 15px;
+    display: inline-block;
+}
 
-        .footer-links a:hover {
-            color: #D4AF37;
-            padding-left: 20px;
-        }
+.footer-links a::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #D4AF37;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
 
-        .footer-links a:hover::before {
-            opacity: 1;
-        }
+.footer-links a:hover {
+    color: #D4AF37;
+    padding-left: 24px;
+}
 
-        .contact-info p {
-            margin-bottom: 15px;
-            color: #ccc;
-            display: flex;
-            align-items: center;
-        }
+.footer-links a:hover::before {
+    opacity: 1;
+}
 
-        .contact-info i {
-            color: #D4AF37;
-            margin-right: 10px;
-            font-size: 16px;
-        }
+.contact-info p {
+    margin-bottom: 18px;
+    color: #ccc;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+}
 
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 25px;
-        }
+.contact-info i {
+    background-color: transparent;
+    color: #D4AF37;
+    margin-right: 12px;
+    font-size: 18px;
+    width: 24px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
 
-        .social-link {
-            width: 40px;
-            height: 40px;
-            background-color: #333;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 18px;
-        }
+.contact-info p:hover i {
+    transform: scale(1.2);
+}
 
-        .social-link:hover {
-            background-color: #D4AF37;
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(212, 175, 55, 0.3);
-        }
+.social-links {
+    display: flex;
+    gap: 16px;
+    margin-top: 30px;
+}
 
-        .copyright {
-            text-align: center;
-            padding-top: 40px;
-            border-top: 1px solid #333;
-            margin-top: 40px;
-            color: #777;
-            font-size: 14px;
-            position: relative;
-            z-index: 1;
-        }
+.social-link {
+    width: 42px;
+    height: 42px;
+    background-color: #222;
+    border: 1px solid #333;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #D4AF37; /* Changed from white to gold for better visibility when hovering */
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 18px;
+    position: relative;
+    overflow: hidden;
+}
 
-        .copyright a {
-            color: #D4AF37;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
+.social-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #D4AF37;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    z-index: -1;
+}
 
-       /* Continue from where the code left off */
-        .copyright a:hover {
-            color: #fff;
-            text-decoration: underline;
-        }
+.social-link:hover {
+    color: #111; /* Dark text on gold background for contrast */
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(212, 175, 55, 0.2);
+    border-color: #D4AF37;
+}
+
+.social-link:hover::before {
+    transform: translateY(0);
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 40px;
+    border-top: 1px solid #333;
+    margin-top: 50px;
+    color: #777;
+    font-size: 14px;
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.copyright a {
+    color: #D4AF37;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+.copyright a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .footer {
+        padding: 70px 30px 30px;
+    }
+    
+    .footer-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-logo .logo-text {
+        font-size: 30px;
+    }
+    
+    .footer-logo .logo-circle {
+        width: 46px;
+        height: 46px;
+    }
+}
 
         /* Hamburger Menu for Mobile */
         .menu-toggle {
@@ -1069,29 +1139,32 @@
         }
 
         /* Enhanced Hero Section */
-        .hero h1 {
-            font-size: 140px;
-            letter-spacing: 20px;
-            text-transform: uppercase;
-            background: linear-gradient(to right, #fff, #D4AF37, #fff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            animation: heroTextGlow 3s infinite alternate;
-        }
+.hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 90px; /* Reduced from 120px for better fit */
+    font-weight: 700;
+    letter-spacing: 10px; /* Reduced from 15px to improve fit */
+    margin-bottom: 30px;
+    text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.5);
+    color: #ffffff; /* Changed to solid white instead of using the gold accent */
+    opacity: 0;
+    animation: fadeInSpread 1.5s ease forwards;
+    animation-delay: 0.5s;
+    transform: translateY(20px);
+}
 
-        @keyframes heroTextGlow {
-            0% {
-                text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-                transform: scale(1);
-            }
-            100% {
-                text-shadow: 0 0 20px rgba(212, 175, 55, 0.8), 0 0 30px rgba(212, 175, 55, 0.4);
-                transform: scale(1.02);
-            }
-        }
-
+@keyframes fadeInSpread {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+        letter-spacing: 5px;
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        letter-spacing: 10px; /* Updated to match the new value above */
+    }
+}
         /* Inverted Hero Button */
         .hero-btn {
             background-color: #D4AF37;
@@ -1738,18 +1811,10 @@
                     <li><a href="#">Happy Hour: 4pm - 6pm</a></li>
                 </ul>
             </div>
-            <div class="footer-section">
-                <h3>CONTACT US</h3>
-                <div class="contact-info">
-                    <p><i class="fas fa-map-marker-alt"></i> 123 Italian Street, New York, NY 10001</p>
-                    <p><i class="fas fa-phone"></i> (212) 555-6789</p>
-                    <p><i class="fas fa-envelope"></i> info@lafettucine.com</p>
-                    <p><i class="fas fa-clock"></i> Open 7 days a week</p>
-                </div>
             </div>
         </div>
         <div class="copyright">
-            <p>&copy; 2025 La Fettucine Papa. All rights reserved. Website by <a href="#">Italian Designs</a></p>
+            <p>&copy; 2025 La Fettucine Papa. All rights reserved. Website by <a href="#">La Casa Nostra</a></p>
         </div>
     </footer>
 
