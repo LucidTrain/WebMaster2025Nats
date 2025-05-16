@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - La Fettuccine Papa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: #D4AF37 #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 5px;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #fcfcfc;
+            overflow-x: hidden;
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 2px;
+        }
+        
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+        }
+        
+        .navbar.scrolled {
+            background-color: rgba(0, 0, 0, 0.95);
+            padding: 15px 5%;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-circle {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #e6c446, #D4AF37);
+            box-shadow: 0 3px 15px rgba(212, 175, 55, 0.4), inset 0 -2px 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            animation: pulse 3s infinite;
+        }
+        
+        .logo-circle::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+            animation: pulse 3s infinite;
+            pointer-events: none;
+        }
+        
+        .initials {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 20px;
+            color: #111;
+            text-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);
+            z-index: 2;
+        }
+        
+        .logo-text {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            color: #fff;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            letter-spacing: 1px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #D4AF37;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: #D4AF37;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+        
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-icon {
+            color: #fff;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-icon:hover {
+            color: #D4AF37;
+            transform: scale(1.2);
+        }
+        
+        .book-btn {
+            background-color: transparent;
+            color: #D4AF37;
+            border: 2px solid #D4AF37;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+        
+        .book-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: #D4AF37;
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+        
+        .book-btn:hover {
+            color: #000;
+        }
+        
+        .book-btn:hover::before {
+            width: 100%;
+        }
+        
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            color: #fff;
+            font-size: 24px;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.95);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            z-index: 999;
+            clip-path: circle(0% at 100% 0);
+            transition: all 0.6s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+        }
+        
+        .mobile-menu.active {
+            clip-path: circle(150% at 100% 0);
+        }
+        
+        .mobile-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 24px;
+            letter-spacing: 2px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+        }
+        
+        .mobile-menu.active a {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .mobile-menu a:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+        
+        .mobile-menu a:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+        
+        .mobile-menu a:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+        
+        .mobile-menu a:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+        
+        .mobile-menu a:nth-child(5) {
+            transition-delay: 0.5s;
+        }
+        
+        .close-menu {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            color: #fff;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 700px;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://www.constructionweekonline.com/cloud/2024/04/25/Bar-Area.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0 5%;
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
+            opacity: 0.7;
+            animation: pulse-bg 4s infinite;
+            pointer-events: none;
+        }
+        
+        .hero h1 {
+            font-size: 90px;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+            letter-spacing: 10px;
+            margin-bottom: 20px;
+            animation: fadeInSpread 1.5s ease;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            color: #fff;
+            max-width: 700px;
+            margin-bottom: 40px;
+            animation: fadeIn 2s ease;
+        }
+        
+        .hero-btn {
+            background-color: #D4AF37;
+            color: #000;
+            border: 2px solid #D4AF37;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: 1px;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: all 0.3s ease;
+            animation: fadeIn 2.5s ease;
+        }
+        
+        .hero-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: #000;
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+        
+        .hero-btn:hover {
+            color: #D4AF37;
+        }
+        
+        .hero-btn:hover::before {
+            width: 100%;
+        }
+        
+        /* About Section */
+        .about {
+            position: relative;
+            padding: 120px 5%;
+            overflow: hidden;
+        }
+        
+        .section-title {
+            font-size: 52px;
+            font-weight: 700;
+            color: #111;
+            letter-spacing: 3px;
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(to right, #D4AF37, #e6c446);
+            transition: all 0.5s ease;
+        }
+        
+        .section-title:hover::after {
+            width: 100%;
+        }
+        
+        .about-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .about-image-container {
+            flex: 1;
+            position: relative;
+            max-width: 500px;
+        }
+        
+        .about-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            transition: all 0.5s ease;
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+        }
+        
+        .about-image:hover {
+            transform: translateY(-15px) rotate(2deg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: all 0.5s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
+            z-index: 1;
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+        
+        .about-image:hover::before {
+            opacity: 1;
+        }
+        
+        .about-content {
+            flex: 1;
+            max-width: 600px;
+        }
+        
+        .about-content h2 {
+            font-size: 42px;
+            color: #222;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .about-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, #D4AF37, #e6c446);
+            transition: all 0.5s ease;
+        }
+        
+        .about-content h2:hover::after {
+            width: 100%;
+        }
+        
+        .about-content p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+        
+        .highlight {
+            color: #D4AF37;
+            font-weight: 600;
+        }
+        
+        .italic {
+            font-style: italic;
+        }
+        
+        .about-btn {
+            background-color: transparent;
+            color: #D4AF37;
+            border: 2px solid #D4AF37;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 1px;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin-top: 15px;
+        }
+        
+        .about-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: #D4AF37;
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+        
+        .about-btn:hover {
+            color: #000;
+        }
+        
+        .about-btn:hover::before {
+            width: 100%;
+        }
+        
+        /* Team Section */
+        .team {
+            position: relative;
+            padding: 120px 5%;
+            background-color: #f9f9f9;
+            overflow: hidden;
+        }
+        
+        .team::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .team-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .team-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+        
+        .team-intro p {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        .hierarchy {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+            margin-top: 50px;
+        }
+        
+        .member {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .member::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, #D4AF37, #b39329);
+            transition: all 0.4s ease;
+        }
+        
+        .member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .member:hover::before {
+            width: 10px;
+        }
+        
+        .member-image {
+            flex: 0 0 200px;
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        
+        .member:hover .member-image {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.4s ease;
+        }
+        
+        .member:hover .member-image img {
+            transform: scale(1.1);
+        }
+        
+        .member-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
+            z-index: 1;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        
+        .member:hover .member-image::before {
+            opacity: 1;
+        }
+        
+        .member-info {
+            flex: 1;
+        }
+        
+        .member-title {
+            font-size: 32px;
+            color: #222;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .member-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(to right, #D4AF37, #e6c446);
+            transition: all 0.4s ease;
+        }
+        
+        .member:hover .member-title {
+            color: #D4AF37;
+        }
+        
+        .member:hover .member-title::after {
+            width: 100%;
+        }
+        
+        .member-role {
+            font-size: 18px;
+            color: #777;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .member-quote {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.7;
+            position: relative;
+            padding-left: 20px;
+            border-left: 3px solid #D4AF37;
+            font-style: italic;
+        }
+        
+        .quote-marks {
+            font-size: 36px;
+            color: rgba(212, 175, 55, 0.3);
+            line-height: 0;
+            position: absolute;
+        }
+        
+        .quote-open {
+            top: 15px;
+            left: -10px;
+        }
+        
+        .quote-close {
+            bottom: -10px;
+            right: 0;
+        }
+        
+        /* Footer */
+        .footer {
+            position: relative;
+            padding: 80px 5% 40px;
+            background: linear-gradient(to bottom, #1a1a1a, #111);
+            color: #ccc;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, #111, #D4AF37, #111);
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-section h3 {
+            font-size: 24px;
+            color: #D4AF37;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(to right, #D4AF37, transparent);
+            transition: all 0.4s ease;
+        }
+        
+        .footer-section:hover h3::after {
+            width: 100%;
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .footer-links a::before {
+            content: '\f105';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #D4AF37;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: #D4AF37;
+            padding-left: 25px;
+        }
+        
+        .footer-links a:hover::before {
+            left: 5px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-info p:hover {
+            transform: translateX(5px);
+            color: #fff;
+        }
+        
+        .contact-info i {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #D4AF37;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-info p:hover i {
+            background: #D4AF37;
+            color: #111;
+            transform: translateY(-50%) scale(1.2);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #222, #1a1a1a);
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2), -5px -5px 10px rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #D4AF37;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: #D4AF37;
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.1);
+            color: #111;
+        }
+        
+        .social-link:hover::before {
+            width: 100%;
+        }
+        
+        .social-link:hover i {
+            transform: rotate(360deg);
+        }
+        
+        .social-link i {
+            transition: all 0.5s ease;
+        }
+        
+        .copyright {
+            margin-top: 60px;
+            text-align: center;
+            font-size: 14px;
+            color: #777;
+            position: relative;
+            padding-top: 20px;
+        }
+        
+        .copyright::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
+        }
+        
+        .copyright a {
+            color: #D4AF37;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .copyright a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+        
+        /* Animations */
+        @keyframes pulse {
+            0% {
+                opacity: 0.6;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0.6;
+            }
+        }
+        
+        @keyframes pulse-bg {
+            0% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.7;
+                transform: scale(1.05);
+            }
+            100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes fadeInSpread {
+            0% {
+                opacity: 0;
+                letter-spacing: 15px;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                letter-spacing: 10px;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 70px;
+                letter-spacing: 6px;
+            }
+            
+            .section-title {
+                font-size: 44px;
+            }
+            
+            .about-container {
+                flex-direction: column;
+                gap: 40px;
+                text-align: center;
+            }
+            
+            .about-content h2::after,
+            .member-title::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .about-content h2:hover::after {
+                width: 100%;
+                left: 0;
+                transform: translateX(0);
+            }
+            
+            .member {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .member-image {
+                flex: 0 0 250px;
+                width: 250px;
+                height: 250px;
+                border-radius: 50%;
+            }
+            
+            .member-title::after {
+                width: 60px;
+            }
+            
+            .member:hover .member-title::after {
+                width: 100%;
+                left: 0;
+                transform: translateX(0);
+            }
+            
+            .member-quote {
+                padding: 20px;
+                border-left: none;
+                border-top: 3px solid #D4AF37;
+            }
+            
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 20px 5%;
+            }
+            
+            .nav-links, .nav-icons {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .hero {
+                padding: 0 5%;
+            }
+            
+            .hero h1 {
+                font-size: 50px;
+                letter-spacing: 4px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .about, .team {
+                padding: 80px 5%;
+            }
+            
+            .section-title {
+                font-size: 38px;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-section h3::after,
+            .contact-info i {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .footer-links a {
+                padding-left: 0;
+            }
+            
+            .footer-links a::before {
+                display: none;
+            }
+            
+            .contact-info p {
+                padding-left: 0;
+            }
+            
+            .contact-info i {
+                position: static;
+                display: inline-flex;
+                margin-right: 10px;
+                transform: none;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 40px;
+                letter-spacing: 2px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .about-content h2 {
+                font-size: 28px;
+            }
+            
+            .member-title {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <div class="logo-circle">
+                <span class="initials">LFP</span>
+            </div>
+            <span class="logo-text">La Fettuccine Papa</span>
+        </div>
+        
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html" class="active">About</a>
+            <a href="menu.html">Menu</a>
+            <a href="gallery.html">Sustainability</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        
+        <div class="nav-right">
+            <div class="nav-icons">
+        <a href="#" class="nav-icon"><i class="fa fa-shopping-cart"></i></a>
+        <a href="#" class="nav-icon"><i class="fa fa-user"></i></a>
+            </div>
+            
+            <a href="#reservation" class="book-btn">Book a Table</a>
+        </div>
+        
+        <div class="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="menu.html">Menu</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+        <div class="close-menu">
+            <i class="fa-solid fa-xmark"></i>
+        </div>
+    </div>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>BENVENUTI A LA FETTUCCINE PAPA</h1>
+        <p>Where tradition meets respect, and every meal is an offer you can't refuse.</p>
+        <a href="#reservation" class="hero-btn">Make a Reservation</a>
+    </section>
+    
+    <!-- About Section -->
+    <section class="about">
+        <div class="about-container">
+            <div class="about-image-container">
+                <div class="about-image">
+                    <img src="https://axwwgrkdco.cloudimg.io/v7/__gmpics3__/73bab4f8900a4dcda00a7c80484ee3be.jpeg?w=800&h=800&org_if_sml=1" alt="La Fettuccine Papa Restaurant Interior">
+                </div>
+            </div>
+            
+            <div class="about-content">
+                <h2>Our Story</h2>
+                <p>Founded in 1925, <span class="highlight">La Fettuccine Papa</span> has been serving authentic Italian cuisine with a side of respect and loyalty. Our family business operates on the principles that have guided generations: quality ingredients, traditional recipes, and an atmosphere where guests are treated like <span class="italic">famiglia</span>.</p>
+                <p>Just as a good consigliere never betrays their don, we never compromise on our standards. Our kitchen is our territory, and we protect it with unwavering dedication to culinary excellence. When you dine with us, you're not just a customer – you're under our protection for the evening.</p>
+                <p>From our secret family recipes to the way we handle business, everything at La Fettuccine Papa is done with honor and respect for tradition. As we like to say, <span class="highlight">"Leave the gun, take the cannoli."</span></p>
+                <a href="#team" class="about-btn">Meet the Family</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <div class="team-container">
+            <h2 class="section-title">The Family Hierarchy</h2>
+            
+            <div class="team-intro">
+                <p>At La Fettuccine Papa, we operate with a clear chain of command. Our philosophy comes from the greats who understood power, loyalty, and the art of making offers that cannot be refused. Meet the minds behind our culinary empire.</p>
+            </div>
+            
+            <div class="hierarchy">
+                <div class="member">
+                    <div class="member-image">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Portrait_of_Niccol%C3%B2_Machiavelli_by_Santi_di_Tito.jpg/1200px-Portrait_of_Niccol%C3%B2_Machiavelli_by_Santi_di_Tito.jpg" alt="Our Philosophical Inspiration">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-title">The Philosophical Foundation</h3>
+                        <p class="member-role">Our Guiding Principles</p>
+                        <div class="member-quote">
+                            <span class="quote-marks quote-open">"</span>
+                            It is better to be feared than loved, if you cannot be both. But the best restaurants achieve both through exceptional service and unforgettable cuisine. In the culinary world, the end justifies the means only if the end is perfection on a plate.
+                            <span class="quote-marks quote-close">"</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="member">
+                    <div class="member-image">
+                        <img src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/the-godfather-marlon-brando-1972-everett.jpg" alt="The Restaurant's Founder">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-title">Il Padrino</h3>
+                        <p class="member-role">Founder & Patriarch</p>
+                        <div class="member-quote">
+                            <span class="quote-marks quote-open">"</span>
+                            A man who doesn't spend time with his family can never be a real man. The same applies to food – when you cut corners in the kitchen, you disrespect the tradition. I believe in friendship, respect, and pasta cooked perfectly al dente. These are values you can take to the bank.
+                            <span class="quote-marks quote-close">"</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="member">
+                    <div class="member-image">
+                        <img src="https://i.pinimg.com/736x/39/bd/09/39bd09dd47d7664f9541d8d1a673f699.jpg" alt="Our Executive Chef">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-title">Chef Hans Landa</h3>
+                        <p class="member-role">Executive Chef & Culinary Detective</p>
+                        <div class="member-quote">
+                            <span class="quote-marks quote-open">"</span>
+                            I pride myself on my ability to find the finest ingredients no matter where they're hiding. My palate can detect a subpar olive oil from across the room. In my kitchen, there is nowhere to hide for mediocrity. That's a bingo for your taste buds!
+                            <span class="quote-marks quote-close">"</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="member">
+                    <div class="member-image">
+                        <img src="https://static.tvtropes.org/pmwiki/pub/images/32434541445.png" alt="Our Head of Operations">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-title">Gualtiero Bianco</h3>
+                        <p class="member-role">Head of Operations</p>
+                        <div class="member-quote">
+                            <span class="quote-marks quote-open">"</span>
+                            I am not in the restaurant business, I am in the empire business. Quality is not a suggestion, it's the only acceptable standard. When guests taste our tiramisu, they know exactly who they're dealing with. Say my name? They'll say "delizioso."
+                            <span class="quote-marks quote-close">"</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>La Fettuccine Papa</h3>
+                <p>Where every meal tells a story of tradition, respect, and culinary excellence. Our doors are always open to those who appreciate the finer things in life.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="menu.html">Our Menu</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="#reservation">Reservations</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Opening Hours</h3>
+                <div class="footer-links">
+                    <a href="#">Monday: 5:00 PM - 11:00 PM</a>
+                    <a href="#">Tuesday: 5:00 PM - 11:00 PM</a>
+                    <a href="#">Wednesday: 5:00 PM - 11:00 PM</a>
+                    <a href="#">Thursday: 5:00 PM - 11:00 PM</a>
+                    <a href="#">Friday: 5:00 PM - 12:00 AM</a>
+                    <a href="#">Saturday: 4:00 PM - 12:00 AM</a>
+                    <a href="#">Sunday: 4:00 PM - 10:00 PM</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <div class="contact-info">
+                    <p><i class="fa-solid fa-location-dot"></i> 1234 Corleone Avenue, Little Italy, NY 10013</p>
+                    <p><i class="fa-solid fa-phone"></i> (212) 555-0123</p>
+                    <p><i class="fa-solid fa-envelope"></i> info@lafettuccinepapa.com</p>
+                    <p><i class="fa-solid fa-clock"></i> Open Daily: 5:00 PM - 11:00 PM</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 La Fettuccine Papa. All rights reserved. | Designed with respect by <a href="#">The Family</a></p>
+        </div>
+    </footer>
+    
+    <script>
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const closeMenu = document.querySelector('.close-menu');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        
+        menuToggle.addEventListener('click', function() {
+            mobileMenu.classList.add('active');
+        });
+        
+        closeMenu.addEventListener('click', function() {
+            mobileMenu.classList.remove('active');
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
+                }
+            });
+        });
+        
+        // Animation on Scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.about-image, .about-content, .member');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+        
+        // Set initial state for animation elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.about-image, .about-content, .member');
+            
+            elements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'all 0.8s ease';
+            });
+            
+            // Trigger initial check
+            animateOnScroll();
+        });
+        
+        // Listen for scroll events
+        window.addEventListener('scroll', animateOnScroll);
+    </script>
+</body>
+</html>
