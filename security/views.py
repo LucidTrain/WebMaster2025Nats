@@ -8,6 +8,12 @@ import uuid
 # Create your views here.
 
 
+def demologout(request):
+    userobj = request.user
+    userobj.delete()
+    return redirect('/')
+
+
 def demoUser(request):
     uuidstr = str(uuid.uuid4())
     pwuuidstr = str(uuid.uuid4())
