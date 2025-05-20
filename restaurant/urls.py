@@ -21,6 +21,10 @@ from security.views import demoUser, demologout
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
+    path('about/', views.about, name='about'),
+    path('menu/', views.menu, name='menu'),
+    path('contact/', views.contact, name='contact'),
+    path('sustainability/', views.sustainability, name='sustainability'),
     path('accounts/login', demoUser, name='logon'),
     path('accounts/logout/demo', demologout, name='demobreak'),
 ]
