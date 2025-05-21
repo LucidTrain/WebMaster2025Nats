@@ -14,3 +14,6 @@ def sustainability(request):
 
 def contact(request):
     return render(request, 'contact.html')
+
+def references(request):
+    return render(request, 'references.html')

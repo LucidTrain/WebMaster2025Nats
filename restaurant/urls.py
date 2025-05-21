@@ -25,6 +25,7 @@ urlpatterns = [
     path('menu/', views.menu, name='menu'),
     path('contact/', views.contact, name='contact'),
     path('sustainability/', views.sustainability, name='sustainability'),
+    path('references/', views.references, name='references'),
     path('accounts/login', demoUser, name='logon'),
     path('accounts/logout/demo', demologout, name='demobreak'),
 ]
