@@ -887,10 +887,28 @@
     text-align: center;
     padding: 15px;
     margin-top: 20px;
+    margin-bottom: 20px; /* Added margin to the bottom */
     border-radius: 8px;
     font-size: 16px;
     animation: fadeInOut 3s ease-in-out;
+    font-family: 'Montserrat', sans-serif; /* Ensure consistent font */
 }
+
+#email-error-banner {
+    display: none;
+    background-color: #e74c3c; /* Red background for error */
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    padding: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    animation: fadeInOut 3s ease-in-out; /* Use the same animation for consistency */
+}
+
 
 @keyframes fadeInOut {
     0% { opacity: 0; }
@@ -1626,7 +1644,6 @@
     </style>
 </head>
 <body>
-    <!-- Navbar -->
     <nav class="navbar">
         <div class="logo">
             <div class="logo-circle">
@@ -1658,14 +1675,12 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero" id="home">
         <h1>LA FETTUCINE PAPA</h1>
         <p>Experience the true flavors of Italy with our traditional recipes passed down through generations. We use only the freshest, locally-sourced ingredients to create unforgettable culinary experiences.</p>
         <button class="hero-btn">EXPLORE OUR MENU</button>
     </section>
 
-    <!-- About Section -->
     <section class="about" id="about">
         <h2 class="section-title">OUR STORY</h2>
         <div class="about-container">
@@ -1681,7 +1696,6 @@
         </div>
     </section>
 
-    <!-- Menu Section -->
     <section class="menu" id="menu">
         <h2 class="section-title">OUR SPECIALTIES</h2>
         <p class="menu-desc">Discover our carefully crafted menu featuring traditional Italian dishes made with love and the finest ingredients. From hand-rolled pasta to wood-fired pizzas, our culinary team ensures an authentic dining experience.</p>
@@ -1744,7 +1758,6 @@
         <button class="menu-btn">VIEW FULL MENU</button>
     </section>
 
-    <!-- Sustainability Section -->
     <section class="sustainability" id="sustainability">
         <h2 class="section-title">OUR COMMITMENT</h2>
         <p class="menu-desc">At La Fettucine Papa, we believe in sustainable practices that respect both our environment and community. Our commitment to sustainability guides everything we do, from sourcing ingredients to reducing waste.</p>
@@ -1771,7 +1784,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section class="contact" id="contact">
         <h2 class="section-title">GET IN TOUCH</h2>
         <div class="contact-container">
@@ -1783,6 +1795,7 @@
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" placeholder="Your Email">
+                    <div id="email-error-banner" class="banner-message">Please enter a valid email address.</div>
                 </div>
                 <div class="form-group">
                     <label for="message">Message</label>
@@ -1797,7 +1810,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-section">
@@ -1834,10 +1846,9 @@
                     <li><a href="#">Happy Hour: 4pm - 6pm</a></li>
                 </ul>
             </div>
-            </div>
         </div>
         <div class="copyright">
-            <p>&copy; 2025 La Fettucine Papa. All rights reserved. Website by <a href="#">La Casa Nostra</a></p>
+            <p>© 2025 La Fettucine Papa. All rights reserved. Website by <a href="#">La Casa Nostra</a></p>
         </div>
     </footer>
 
@@ -1885,14 +1896,13 @@
             carousel.style.transform = `translateX(-${itemWidth}px)`;
             setTimeout(() => {
                 carousel.style.transition = 'transform 0.4s ease';
-carousel.style.transition = 'transform 0.4s ease';
-            carousel.style.transform = 'translateX(0)';
-            setTimeout(() => {
-                carousel.style.animation = 'autoScroll 30s linear infinite';
-                carousel.style.transition = '';
-            }, 400);
-        }, 10);
-    });
+                carousel.style.transform = 'translateX(0)';
+                setTimeout(() => {
+                    carousel.style.animation = 'autoScroll 30s linear infinite';
+                    carousel.style.transition = '';
+                }, 400);
+            }, 10);
+        });
     
     // Smooth scrolling for navigation links
     document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
@@ -1937,12 +1947,18 @@ carousel.style.transition = 'transform 0.4s ease';
     const nameInput = document.getElementById('name');
     const emailInput = document.getElementById('email');
     const messageInput = document.getElementById('message');
-    
-    contactForm.addEventListener('submit', function(e) {
+    const contactBtn = document.querySelector('.contact-btn'); // Get the button
+    const emailErrorBanner = document.getElementById('email-error-banner'); // Get the new email error banner
+
+    contactBtn.addEventListener('click', function(e) { // Changed to click listener for the button
         e.preventDefault();
         
         let isValid = true;
         
+        // Hide all banners initially
+        document.getElementById('contact-banner').style.display = 'none';
+        emailErrorBanner.style.display = 'none';
+
         if (nameInput.value.trim() === '') {
             highlightError(nameInput);
             isValid = false;
@@ -1952,9 +1968,11 @@ carousel.style.transition = 'transform 0.4s ease';
         
         if (emailInput.value.trim() === '' || !isValidEmail(emailInput.value)) {
             highlightError(emailInput);
+            emailErrorBanner.style.display = 'block'; // Show email error banner
             isValid = false;
         } else {
             removeError(emailInput);
+            emailErrorBanner.style.display = 'none'; // Hide email error banner
         }
         
         if (messageInput.value.trim() === '') {
@@ -1969,18 +1987,19 @@ carousel.style.transition = 'transform 0.4s ease';
             const submitBtn = document.querySelector('.contact-btn');
             submitBtn.innerHTML = '<i class="fas fa-check"></i> SENT';
             submitBtn.style.backgroundColor = '#4CAF50';
-            // Show 3-second banner
-            const banner = document.getElementById('contact-banner');
-            banner.style.display = 'block';
+            
+            // Show 3-second success banner
+            const successBanner = document.getElementById('contact-banner');
+            successBanner.style.display = 'block';
             setTimeout(() => {
-                banner.style.display = 'none';
+                successBanner.style.display = 'none';
             }, 3000);
             
             // Reset form
             setTimeout(() => {
                 contactForm.reset();
                 submitBtn.innerHTML = 'SEND MESSAGE';
-                submitBtn.style.backgroundColor = '';
+                submitBtn.style.backgroundColor = '#D4AF37'; // Reset to original gold color
             }, 3000);
         }
     });

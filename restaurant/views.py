@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 def home(request):
-    return render(request, 'lfphome2.html')
+    return render(request, 'lfphome3.html')
 
 def about(request):
     return render(request, 'lfpabout.html')
