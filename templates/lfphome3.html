@@ -1,3 +1,4 @@
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1659,12 +1660,12 @@
         </div>
         
         <ul class="nav-links">
-            <li style="--i:1"><a href="#home">Home</a></li>
-            <li style="--i:2"><a href="#about">About</a></li>
-            <li style="--i:3"><a href="#menu">Menu</a></li>
-            <li style="--i:4"><a href="#sustainability">Sustainability</a></li>
-            <li style="--i:5"><a href="#contact">Contact</a></li>
-            <li><a href="references.html">References</a></li>
+            <li style="--i:1"><a href="/">Home</a></li>
+            <li style="--i:2"><a href="/about/">About</a></li>
+            <li style="--i:3"><a href="/menu/">Menu</a></li>
+            <li style="--i:4"><a href="/sustainability/">Sustainability</a></li>
+            <li style="--i:5"><a href="/contact/">Contact</a></li>
+            <li><a href="/references/">References</a></li>
 
         </ul>
         
@@ -1985,9 +1986,12 @@
         if (isValid) {
             // Here you would normally send the form data to a server
             const submitBtn = document.querySelector('.contact-btn');
+            const originalBtnText = submitBtn.innerHTML;
             submitBtn.innerHTML = '<i class="fas fa-check"></i> SENT';
-            submitBtn.style.backgroundColor = '#4CAF50';
-            
+            setTimeout(() => {
+                submitBtn.innerHTML = originalBtnText;
+            }, 3000);
+            // Done
             // Show 3-second success banner
             const successBanner = document.getElementById('contact-banner');
             successBanner.style.display = 'block';
@@ -2106,3 +2110,4 @@
     </script>
 </body>
 </html>
+{% endblock %}
