@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'payment',
     'person',
     'reference',
+    'logistic',
 ]
 
 MIDDLEWARE = [
@@ -58,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'logistic.middleware.VisitMiddleware',
 ]
 
 ROOT_URLCONF = 'restaurant.urls'
