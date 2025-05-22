@@ -9,6 +9,11 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
+import os
+import dj_database_url
+from dotenv import load_dotenv
+load_dotenv()
+
 
 from pathlib import Path
 
@@ -43,6 +48,7 @@ INSTALLED_APPS = [
     'payment',
     'person',
     'reference',
+    'logistic',
 ]
 
 MIDDLEWARE = [
@@ -53,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'logistic.middleware.VisitMiddleware',
 ]
 
 ROOT_URLCONF = 'restaurant.urls'
@@ -79,10 +86,9 @@ WSGI_APPLICATION = 'restaurant.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    
+    'default': dj_database_url.parse(os.getenv('DATABASE_URL')),
+    
 }
 
 
