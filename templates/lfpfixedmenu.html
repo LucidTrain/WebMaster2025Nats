@@ -16,6 +16,39 @@
             box-sizing: border-box;
         }
 
+         .book-btn {
+            background: transparent;
+            color: #D4AF37;
+            border: 2px solid #D4AF37;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            margin-left: 30px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: all 0.4s ease;
+        }
+
+        .book-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: #D4AF37;
+            transition: all 0.4s ease;
+            z-index: -1;
+        }
+
+        .book-btn:hover {
+            color: #000;
+        }
+
+        .book-btn:hover::before {
+            width: 100%;
+        }
         :root {
             --gold: #D4AF37;
             --gold-light: #e6c446;
@@ -281,23 +314,23 @@
             animation: fadeIn 2s ease;
         }
 
-        .hero-btn {
-            background-color: var(--gold);
-            color: var(--darker);
-            border: 2px solid var(--gold);
+      .hero-btn {
+            background-color: #D4AF37;
+            color: #000;
+            border: 2px solid #D4AF37;
             padding: 15px 35px;
             border-radius: 50px;
             font-weight: 600;
-            text-transform: uppercase;
+            font-size: 16px;
             letter-spacing: 1px;
-            cursor: pointer;
+            text-decoration: none;
             position: relative;
             overflow: hidden;
             z-index: 1;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
             animation: fadeIn 2.5s ease;
         }
-
+        
         .hero-btn::before {
             content: '';
             position: absolute;
@@ -305,18 +338,18 @@
             left: 0;
             width: 0;
             height: 100%;
-            background-color: var(--darker);
+            background-color: #000;
+            transition: all 0.3s ease;
             z-index: -1;
-            transition: width 0.3s ease;
         }
-
+        
         .hero-btn:hover {
-            color: var(--gold);
+            background-color: #000;
+            color: #D4AF37;
         }
-
-        .hero-btn:hover::before {
-            width: 100%;
-        }
+        
+     
+        
 
         /* Menu Sections */
         .menu-section {
@@ -1473,24 +1506,17 @@
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
-        <div class="logo-container">
-            <div class="logo-circle">
-                <div class="initials">LFP</div>
-            </div>
-            <div class="logo-text">La Fettuccine Papa</div>
-        </div>
+        <a href="/" style="text-decoration: none;"><div class="logo-container" style="display: flex; align-items: center;"><div class="logo-circle"><div class="initials">LFP</div></div><div class="logo-text">La Fettuccine Papa</div></div></a>
         <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="menu.html">Menu</a></li>
-            <li><a href="sustainability.html">Sustainability</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="references.html">References</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/menu/">Menu</a></li>
+            <li><a href="/sustainability/">Sustainability</a></li>
+            <li><a href="/references/">References</a></li>
         </ul>
         <div class="nav-right">
-            <i class="fas fa-shopping-cart nav-icon"></i>
-            <i class="fas fa-user nav-icon"></i>
-            <button class="book-btn">Book A Table</button>
+      
+            <a style="text-decoration: none;" href="/reservation/" class="book-btn">RESERVE A TABLE</a>
             <i class="fas fa-bars menu-toggle"></i>
         </div>
     </nav>
@@ -1501,18 +1527,18 @@
         <div class="hero-content">
             <h1>OUR MENU</h1>
             <p>Discover our authentic Italian dishes, crafted with passion and the finest ingredients. Each recipe tells a story of tradition, innovation, and culinary excellence.</p>
-            <button class="hero-btn">Explore Tastes</button>
+            <a class="hero-btn" style="text-decoration: none; font-family: 'Montserrat', sans-serif; font-weight: 600;" href="#cul-del">Explore Tastes</a>
         </div>
     </section>
 
     <!-- Menu Section -->
     <section class="menu-section">
         <div style="text-align: center; margin-bottom: 30px;">
-            <h2 class="section-title">CULINARY DELIGHTS</h2>
+            <h2 class="section-title" id="cul-del">CULINARY DELIGHTS</h2>
             <p class="menu-intro">Our chefs blend traditional Italian cooking methods with contemporary techniques to create dishes that are both authentic and innovative. We source the freshest local ingredients and import specialty items directly from Italy to ensure every bite is a journey through the rich culinary landscape of Italy.</p>
         </div>
 
-        <!-- Menu Categories -->
+        <!-- Menu Categories 
         <div class="category-container">
             <button class="category-btn active" data-category="all">All</button>
             <button class="category-btn" data-category="antipasti">Antipasti</button>
@@ -1521,7 +1547,7 @@
             <button class="category-btn" data-category="secondi">Secondi</button>
             <button class="category-btn" data-category="dolci">Dolci</button>
             <button class="category-btn" data-category="bevande">Bevande</button>
-        </div>
+        </div>-->
 
         <!-- Menu Items Grid -->
         <div class="menu-grid">
@@ -1541,14 +1567,13 @@
                             <i class="fas fa-star"></i>
                             <span>4.9 (46 reviews)</span>
                         </div>
-                        <button class="menu-item-button">View Details</button>
-                    </div>
+ <!-- <button class="menu-item-button">View Details</button> -->                    </div>
                 </div>
             </div>
 
             <div class="menu-item" data-category="antipasti">
                 <div class="menu-item-image">
-                    <img src="https://images.unsplash.com/photo-1625944230945-1b7dd3c211ab?q=80&w=1064&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Caprese Salad">
+                    <img src="https://images.prismic.io/eataly-us/f161512d-57c9-4a70-b9bc-c3f951b9a456_insalata-caprese-main.jpg?auto=compress,format" alt="Caprese Salad">
                 </div>
                 <div class="menu-item-content">
                     <div class="menu-item-title">
@@ -1560,14 +1585,13 @@
                             <i class="fas fa-star"></i>
                             <span>4.8 (39 reviews)</span>
                         </div>
-                        <button class="menu-item-button">View Details</button>
-                    </div>
+ <!-- <button class="menu-item-button">View Details</button> -->                    </div>
                 </div>
             </div>
 
             <div class="menu-item" data-category="antipasti">
                 <div class="menu-item-image">
-                    <img src="https://images.unsplash.com/photo-1604579278540-db35e3c3cf2f?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Antipasto Platter">
+                    <img src="https://foodie.sysco.com/wp-content/uploads/2021/08/Antipasto_Assemblage-019c.jpg.png" alt="Antipasto Platter">
                 </div>
                 <div class="menu-item-content">
                     <div class="menu-item-title">
@@ -1579,8 +1603,7 @@
                             <i class="fas fa-star"></i>
                             <span>4.9 (52 reviews)</span>
                         </div>
-                        <button class="menu-item-button">View Details</button>
-                    </div>
+ <!-- <button class="menu-item-button">View Details</button> -->                    </div>
                 </div>
             </div>
 
@@ -1600,8 +1623,7 @@
                             <i class="fas fa-star"></i>
                             <span>5.0 (87 reviews)</span>
                         </div>
-                        <button class="menu-item-button">View Details</button>
-                    </div>
+ <!-- <button class="menu-item-button">View Details</button> -->                    </div>
                 </div>
             </div>
 
@@ -1619,8 +1641,7 @@
                             <i class="fas fa-star"></i>
                             <span>4.9 (64 reviews)</span>
                         </div>
-                        <button class="menu-item-button">View Details</button>
-                    </div>
+ <!-- <button class="menu-item-button">View Details</button> -->                    </div>
                 </div>
             </div>
 
@@ -1638,8 +1659,7 @@
                             <i class="fas fa-star"></i>
                             <span>4.8 (71 reviews)</span>
                         </div>
-                        <button class="menu-item-button">View Details</button>
-                    </div>
+ <!-- <button class="menu-item-button">View Details</button> -->                    </div>
                 </div>
             </div>
 
@@ -1658,15 +1678,14 @@
                             <i class="fas fa-star"></i>
                             <span>4.9 (58 reviews)</span>
                         </div>
-                        <button class="menu-item-button">View Details</button>
-                    </div>
+ <!-- <button class="menu-item-button">View Details</button> -->                    </div>
                 </div>
             </div>
 
             <!-- Pizze -->
             <div class="menu-item" data-category="pizze">
                 <div class="menu-item-image">
-                    <img src="https://images.unsplash.com/photo-1595854341625-f33e218bd2dc?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Margherita Pizza">
+                    <img src="https://www.foodandwine.com/thmb/7BpSJWDh1s-2M2ooRPHoy07apq4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/mozzarella-pizza-margherita-FT-RECIPE0621-11fa41ceb1a5465d9036a23da87dd3d4.jpg" alt="Margherita Pizza">
                 </div>
                 <div class="menu-item-content">
                     <div class="menu-item-title">
@@ -1678,8 +1697,7 @@
                             <i class="fas fa-star"></i>
                             <span>4.8 (92 reviews)</span>
                         </div>
-                        <button class="menu-item-button">View Details</button>
-                    </div>
+ <!-- <button class="menu-item-button">View Details</button> -->                    </div>
                 </div>
             </div>
 
@@ -1698,8 +1716,7 @@
                             <i class="fas fa-star"></i>
                             <span>4.9 (76 reviews)</span>
                         </div>
-                        <button class="menu-item-button">View Details</button>
-                    </div>
+ <!-- <button class="menu-item-button">View Details</button> -->                    </div>
                 </div>
             </div>
 
@@ -1717,71 +1734,30 @@
                             <i class="fas fa-star"></i>
                             <span>4.7 (68 reviews)</span>
                         </div>
-                        <button class="menu-item-button">View Details</button>
-                    </div>
+ <!-- <button class="menu-item-button">View Details</button> -->                    </div>
                 </div>
             </div>
 
             <!-- Secondi -->
             <div class="menu-item" data-category="secondi">
                 <div class="menu-item-image">
-                    <img src="https://images.unsplash.com/photo-1544359150-761b9a959452?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Osso Buco">
+                    <img src="https://www.cucchiaio.it/content/dam/cucchiaio/it/ricette/2022/06/involtini-di-zucchine-al-forno/involtini%20di%20zucchine-ante.jpg" alt="Osso Buco">
                 </div>
                 <div class="menu-item-content">
                     <div class="menu-item-title">
-                        Osso Buco <span class="menu-item-price">$32</span>
+                        Involtini di Zucchine <span class="menu-item-price">$22</span>
                     </div>
-                    <p class="menu-item-desc">Braised veal shanks with white wine, vegetables, and gremolata, served with saffron risotto.</p>
+                    <p class="menu-item-desc">Tender zucchini rolls stuffed with quinoa, chickpeas, fresh herbs, and savory spices.</p>
                     <div class="menu-item-meta">
                         <div class="menu-item-rating">
                             <i class="fas fa-star"></i>
                             <span>4.9 (48 reviews)</span>
                         </div>
-                        <button class="menu-item-button">View Details</button>
-                    </div>
+ <!-- <button class="menu-item-button">View Details</button> -->                    </div>
                 </div>
             </div>
 
-            <div class="menu-item" data-category="secondi">
-                <div class="menu-item-image">
-                    <img src="https://images.unsplash.com/photo-1598514983318-2f64f55639e0?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Branzino">
-                    <div class="menu-item-badge">Seasonal</div>
-                </div>
-                <div class="menu-item-content">
-                    <div class="menu-item-title">
-                        Branzino al Forno <span class="menu-item-price">$34</span>
-                    </div>
-                    <p class="menu-item-desc">Whole roasted Mediterranean sea bass with lemon, herbs, and olive oil. Served with roasted vegetables.</p>
-                    <div class="menu-item-meta">
-                        <div class="menu-item-rating">
-                            <i class="fas fa-star"></i>
-                            <span>4.8 (55 reviews)</span>
-                        </div>
-                        <button class="menu-item-button">View Details</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-item" data-category="secondi">
-                <div class="menu-item-image">
-                    <img src="https://images.unsplash.com/photo-1560611588-163f49a6e936?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Bistecca">
-                    <div class="menu-item-badge">Signature Dish</div>
-                </div>
-                <div class="menu-item-content">
-                    <div class="menu-item-title">
-                        Bistecca Fiorentina <span class="menu-item-price">$45</span>
-                    </div>
-                    <p class="menu-item-desc">35-day dry-aged T-bone steak grilled over wood fire, served with rosemary potatoes and arugula salad.</p>
-                    <div class="menu-item-meta">
-                        <div class="menu-item-rating">
-                            <i class="fas fa-star"></i>
-                            <span>5.0 (61 reviews)</span>
-                        </div>
-                        <button class="menu-item-button">View Details</button>
-                    </div>
-                </div>
-            </div>
-
+           
             <!-- Dolci -->
             <div class="menu-item" data-category="dolci">
                 <div class="menu-item-image">
@@ -1797,33 +1773,31 @@
                             <i class="fas fa-star"></i>
                             <span>4.9 (104 reviews)</span>
                         </div>
-                        <button class="menu-item-button">View Details</button>
-                    </div>
+ <!-- <button class="menu-item-button">View Details</button> -->                    </div>
                 </div>
             </div>
 
             <div class="menu-item" data-category="dolci">
                 <div class="menu-item-image">
-                    <img src="https://images.unsplash.com/photo-1551024601-37299a4a3a6b?q=80&w=1064&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Panna Cotta">
+                    <img src="https://markieskitchen.com/wp-content/uploads/2023/02/espresso-panna-cotta-1-1.jpg" alt="Panna Cotta">
                 </div>
                 <div class="menu-item-content">
                     <div class="menu-item-title">
                         Panna Cotta <span class="menu-item-price">$10</span>
                     </div>
-                    <p class="menu-item-desc">Silky vanilla bean cream with seasonal fruit compote and almond biscotti.</p>
+                    <p class="menu-item-desc"> Smooth creamy panna cotta sprinkled with delicate chocolate shavings.</p>
                     <div class="menu-item-meta">
                         <div class="menu-item-rating">
                             <i class="fas fa-star"></i>
                             <span>4.8 (72 reviews)</span>
                         </div>
-                        <button class="menu-item-button">View Details</button>
-                    </div>
+ <!-- <button class="menu-item-button">View Details</button> -->                    </div>
                 </div>
             </div>
 
             <div class="menu-item" data-category="dolci">
                 <div class="menu-item-image">
-                    <img src="https://images.unsplash.com/photo-1650927958812-5a05f34c8691?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Cannoli">
+                    <img src="https://www.homecookingadventure.com/wp-content/uploads/2022/01/cannoli_siciliani_main.jpg" alt="Cannoli">
                     <div class="menu-item-badge">Chef's Choice</div>
                 </div>
                 <div class="menu-item-content">
@@ -1836,28 +1810,26 @@
                             <i class="fas fa-star"></i>
                             <span>4.9 (83 reviews)</span>
                         </div>
-                        <button class="menu-item-button">View Details</button>
-                    </div>
+ <!-- <button class="menu-item-button">View Details</button> -->                    </div>
                 </div>
             </div>
 
             <!-- Bevande -->
             <div class="menu-item" data-category="bevande">
                 <div class="menu-item-image">
-                    <img src="https://images.unsplash.com/photo-1560801922-0ece5feef2a4?q=80&w=1026&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Wine">
+                    <img src="https://whipperberry.com/wp-content/uploads/2016/04/Peach-Melba-Italian-Soda-by-WhipperBerry-10.jpg" alt="smoothie">
                 </div>
                 <div class="menu-item-content">
                     <div class="menu-item-title">
-                        Italian Wines <span class="menu-item-price">$12+</span>
+                        Frullato di Frutta Mista <span class="menu-item-price" id="dulci">$12+</span>
                     </div>
-                    <p class="menu-item-desc">Selection of premium Italian wines from various regions, available by the glass or bottle.</p>
+                    <p class="menu-item-desc"> Fresh blend of assorted fruits, creamy yogurt, and subtle herbal notes.</p>
                     <div class="menu-item-meta">
                         <div class="menu-item-rating">
                             <i class="fas fa-star"></i>
                             <span>4.9 (67 reviews)</span>
                         </div>
-                        <button class="menu-item-button">View Details</button>
-                    </div>
+ <!-- <button class="menu-item-button">View Details</button> -->                    </div>
                 </div>
             </div>
 
@@ -1875,30 +1847,11 @@
                             <i class="fas fa-star"></i>
                             <span>4.8 (95 reviews)</span>
                         </div>
-                        <button class="menu-item-button">View Details</button>
-                    </div>
+ <!-- <button class="menu-item-button">View Details</button> -->                    </div>
                 </div>
             </div>
 
-            <div class="menu-item" data-category="bevande">
-                <div class="menu-item-image">
-                    <img src="https://images.unsplash.com/photo-1559443922-3f698a0ff27a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Craft Cocktails">
-                    <div class="menu-item-badge">Signature</div>
-                </div>
-                <div class="menu-item-content">
-                    <div class="menu-item-title">
-                        Cocktails Artigianali <span class="menu-item-price">$16</span>
-                    </div>
-                    <p class="menu-item-desc">Handcrafted cocktails with Italian spirits, fresh herbs, and house-made ingredients. Classics and modern creations.</p>
-                    <div class="menu-item-meta">
-                        <div class="menu-item-rating">
-                            <i class="fas fa-star"></i>
-                            <span>4.9 (78 reviews)</span>
-                        </div>
-                        <button class="menu-item-button">View Details</button>
-                    </div>
-                </div>
-            </div>
+           
         </div>
     </section>
 
@@ -1981,32 +1934,31 @@
                     Authentic Italian cuisine made with passion, tradition, and the finest ingredients. Our family-owned restaurant brings the taste of Italy to your table.
                 </p>
                 <div class="social-links">
-                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                 <a href="https://facebook.com" class="social-link" style="text-decoration: none;"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" class="social-link" style="text-decoration: none;"><i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com" class="social-link" style="text-decoration: none;"><i class="fab fa-twitter"></i></a>
+                    <a href="https://pinterest.com" class="social-link" style="text-decoration: none;"><i class="fab fa-pinterest-p"></i></a>
                 </div>
             </div>
 
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <ul class="footer-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">Our Story</a></li>
-                    <li><a href="menu.html">Menu</a></li>
-                    <li><a href="sustainability.html">Sustainability</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about/">Our Story</a></li>
+                    <li><a href="/menu/">Menu</a></li>
+                    <li><a href="/sustainability/">Sustainability</a></li>
+                    <li><a href="/reservations/">Make a Reservation</a></li>
+                    <li><a href="/contact/">Contact Us</a></li>
                 </ul>
             </div>
 
             <div class="footer-section">
                 <h3>Opening Hours</h3>
                 <ul class="footer-links">
-                    <li><a href="#">Monday - Thursday: 11AM - 10PM</a></li>
-                    <li><a href="#">Friday - Saturday: 11AM - 11PM</a></li>
-                    <li><a href="#">Sunday: 11AM - 9PM</a></li>
-                    <li><a href="reservations.html">Make a Reservation</a></li>
-                    <li><a href="events.html">Private Events</a></li>
+                    <li><a href="javascript:void(0)">Monday - Thursday: 11AM - 10PM</a></li>
+                    <li><a href="javascript:void(0)">Friday - Saturday: 11AM - 11PM</a></li>
+                    <li><a href="javascript:void(0)">Sunday: 11AM - 9PM</a></li>
                 </ul>
             </div>
 
@@ -2022,7 +1974,7 @@
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2025 La Fettuccine Papa. All Rights Reserved. <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+            <p>&copy; 2025 La Fettuccine Papa. All Rights Reserved. </p>
         </div>
     </footer>
 

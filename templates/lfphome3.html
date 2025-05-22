@@ -16,6 +16,39 @@
             box-sizing: border-box;
         }
 
+         .book-btn {
+            background: transparent;
+            color: #D4AF37;
+            border: 2px solid #D4AF37;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            margin-left: 30px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: all 0.4s ease;
+        }
+
+        .book-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: #D4AF37;
+            transition: all 0.4s ease;
+            z-index: -1;
+        }
+
+        .book-btn:hover {
+            color: #000;
+        }
+
+        .book-btn:hover::before {
+            width: 100%;
+        }
         body {
             font-family: 'Montserrat', sans-serif;
             color: #333;
@@ -1672,15 +1705,13 @@
             <li style="--i:2"><a href="/about/">About</a></li>
             <li style="--i:3"><a href="/menu/">Menu</a></li>
             <li style="--i:4"><a href="/sustainability/">Sustainability</a></li>
-            <li style="--i:5"><a href="/contact/">Contact</a></li>
             <li><a href="/references/">References</a></li>
 
         </ul>
         
         <div class="nav-icons">
-            <div class="nav-icon cart-icon"><i class="fas fa-shopping-cart"></i></div>
-            <div class="nav-icon user-icon"><i class="fas fa-user"></i></div>
-            <button class="book-btn">Book a Table</button>
+           
+            <a style="text-decoration: none;" href="/reservation/" class="book-btn">RESERVE A TABLE</a>
         </div>
     </nav>
 
@@ -1844,7 +1875,6 @@
                     <li><a href="/about/">About Us</a></li>
                     <li><a href="/menu/">Menu</a></li>
                     <li><a href="/sustainability/">Sustainability</a></li>
-                    <li><a href="/contact/">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-section">

@@ -17,3 +17,6 @@ def contact(request):
 
 def references(request):
     return render(request, 'references.html')
+
+def reservations(request):
+    return render(request, 'reservation.html')
