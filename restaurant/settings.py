@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'reservation',
     'payment',
     'person',
+    'reference',
 ]
 
 MIDDLEWARE = [

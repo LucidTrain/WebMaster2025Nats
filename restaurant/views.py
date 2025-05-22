@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from reference.models import Listing
 
 def home(request):
     return render(request, 'lfphome3.html')
@@ -16,7 +17,8 @@ def contact(request):
     return render(request, 'contact.html')
 
 def references(request):
-    return render(request, 'ref.html')
+    listings = Listing.objects.all()
+    return render(request, 'ref.html', {'listings': listings})
 
 def reservations(request):
     return render(request, 'reservation.html')

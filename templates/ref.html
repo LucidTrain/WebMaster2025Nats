@@ -774,16 +774,11 @@
             <h2 class="links-title">Resource Links</h2>
             <div class="resource-links">
                 <ul class="links-list">
-                    <li><a href="https://example.com/image1.jpg" target="_blank">Hero Background Image</a></li>
-                    <li><a href="https://example.com/image2.jpg" target="_blank">Menu Item Photo 1</a></li>
-                    <li><a href="https://example.com/image3.jpg" target="_blank">Menu Item Photo 2</a></li>
-                    <li><a href="https://example.com/image4.jpg" target="_blank">Restaurant Interior</a></li>
-                    <li><a href="https://example.com/image5.jpg" target="_blank">Chef Portrait</a></li>
-                    <li><a href="https://example.com/doc1.pdf" target="_blank">Project Plan Document</a></li>
-                    <li><a href="https://example.com/doc2.pdf" target="_blank">Design Specifications</a></li>
-                    <li><a href="https://example.com/doc3.pdf" target="_blank">Content Guidelines</a></li>
-                    <li><a href="https://example.com/doc4.pdf" target="_blank">Testing Report</a></li>
-                    <li><a href="https://example.com/doc5.pdf" target="_blank">Final Presentation</a></li>
+                    {% for listing in listings %}
+                        <li><a href="{{ listing.link }}" target="_blank">{{ listing.title }}</a></li>
+                    {% endfor %}
+
+                    
                 </ul>
             </div>
         </div>
