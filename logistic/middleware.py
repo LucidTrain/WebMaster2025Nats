@@ -5,7 +5,7 @@ from .models import Visit
 #from .utils import get_client_ip
 
 
-class VisitLoggingMiddleware(MiddlewareMixin):
+class VisitMiddleware(MiddlewareMixin):
     def process_request(self, request):
         ip, is_routable = get_client_ip(request)
         if ip is None:
