@@ -682,6 +682,43 @@
             .reference-button { font-size: 16px; padding: 15px 30px; min-width: 180px; }
             .resource-links { padding: 25px 15px; }
         }
+
+      .book-btn {
+            background-color: transparent;
+            color: #D4AF37;
+            border: 2px solid #D4AF37;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+        
+        .book-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: #D4AF37;
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+        
+        .book-btn:hover {
+            color: #000;
+        }
+        
+        .book-btn:hover::before {
+            width: 100%;
+        }
+        
+
     </style>
 </head>
 <body>
@@ -698,6 +735,8 @@
         <div class="nav-icons">
             
         </div>
+                    <a style="text-decoration: none;" href="#" class="book-btn">WORK LOG</a>
+
     </nav>
 
     <!-- Hero Section -->
