@@ -19,7 +19,7 @@ class VisitMiddleware(MiddlewareMixin):
         city = g.city if g.city else ''
         country = g.country if g.country else ''
 
-        VisitLog.objects.create(
+        Visit.objects.create(
             ip_address=ip,
             city=city,
             country=country
