@@ -86,11 +86,7 @@ WSGI_APPLICATION = 'restaurant.wsgi.application'
 DATABASES = {
     
     'default': dj_database_url.parse(os.getenv('DATABASE_URL')),
-     'sqlite': {  
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),  # path to your SQLite file
-    }
-
+    
 }
 
 
