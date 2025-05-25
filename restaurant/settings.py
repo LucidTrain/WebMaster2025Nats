@@ -88,9 +88,14 @@ WSGI_APPLICATION = 'restaurant.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    
-    'default': dj_database_url.parse(os.getenv('DATABASE_URL')),
-    
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'webmaster',
+        'USER': 'fluffy',
+        'PASSWORD': '3H4D6S/ye@admin4265',
+        'HOST': 'fluffyindustriesmaindb2.postgres.database.azure.com',
+        'PORT': '5432',
+    }
 }
 
 
