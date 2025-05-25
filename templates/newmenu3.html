@@ -1,0 +1,2952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - La Fettuccine Papa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: #D4AF37 #f1f1f1;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            background-color: #fcfcfc;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b39329;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 2px;
+            line-height: 1.2;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            cursor: pointer;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            transition: all 0.4s ease;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            width: 100%;
+        }
+
+        .btn-primary {
+            background-color: #D4AF37;
+            color: #000;
+            border: 2px solid #D4AF37;
+        }
+
+        .btn-primary::before {
+            background-color: #111;
+        }
+
+        .btn-primary:hover {
+            color: #D4AF37;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #D4AF37;
+            border: 2px solid #D4AF37;
+        }
+
+        .btn-secondary::before {
+            background-color: #D4AF37;
+        }
+
+        .btn-secondary:hover {
+            color: #111;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInSpread {
+            0% {
+                opacity: 0;
+                letter-spacing: -5px;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                letter-spacing: 10px;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes pulse-bg {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.4s ease;
+        }
+
+        .navbar.scrolled {
+            background-color: rgba(0, 0, 0, 0.95);
+            padding: 10px 40px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #e6c446, #D4AF37);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), 
+                        inset 0 2px 5px rgba(255, 255, 255, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-circle::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(0, 0, 0, 0) 70%);
+            animation: pulse 3s infinite ease-in-out;
+        }
+
+        .initials {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 20px;
+            color: #111;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+            z-index: 2;
+        }
+
+        .logo-text {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            color: #fff;
+            margin-left: 15px;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-link {
+            color: #fff;
+            font-weight: 500;
+            position: relative;
+            transition: all 0.3s ease;
+            padding: 5px 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #D4AF37;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #D4AF37;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: #D4AF37;
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-left: 30px;
+        }
+
+        .nav-icon {
+            color: #fff;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-icon:hover {
+            color: #D4AF37;
+            transform: scale(1.2);
+        }
+
+        .book-btn {
+            background-color: transparent;
+            color: #D4AF37;
+            border: 2px solid #D4AF37;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            margin-left: 20px;
+        }
+
+        .book-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background-color: #D4AF37;
+            transition: all 0.4s ease;
+            z-index: -1;
+        }
+
+        .book-btn:hover {
+            color: #000;
+        }
+
+        .book-btn:hover::before {
+            width: 100%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 1002;
+        }
+
+        .mobile-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: #fff;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.95);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            clip-path: circle(0% at 100% 0);
+            transition: all 0.5s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+            clip-path: circle(150% at 100% 0);
+        }
+
+        .mobile-menu .nav-link {
+            font-size: 24px;
+            margin: 15px 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+        }
+
+        .mobile-menu.active .nav-link {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mobile-menu .nav-link:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .mobile-menu .nav-link:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .mobile-menu .nav-link:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .mobile-menu .nav-link:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+
+        .mobile-menu .nav-link:nth-child(5) {
+            transition-delay: 0.5s;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            overflow: hidden;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1579684947550-22e945225d9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80') no-repeat center center/cover;
+            background-attachment: fixed;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.9) 100%);
+            background-size: 200% 200%;
+            animation: pulse-bg 15s infinite ease-in-out;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 90px;
+            font-weight: 700;
+            letter-spacing: 10px;
+            margin-bottom: 30px;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            animation: fadeInSpread 1.5s ease-out;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-out 0.5s forwards;
+        }
+
+        .hero-btn {
+            opacity: 0;
+            animation: fadeIn 1.5s ease-out 1s forwards;
+        }
+
+        /* Menu Section */
+        .menu-page {
+            padding-top: 100px;
+            padding-bottom: 120px;
+            background-color: #fcfcfc;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 52px;
+            letter-spacing: 3px;
+            color: #111;
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #b39329, #D4AF37, #e6c446);
+            transition: all 0.5s ease;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #555;
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        /* Menu Filters */
+        .menu-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            background-color: #f1f1f1;
+            color: #333;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: #D4AF37;
+            color: #fff;
+        }
+
+        /* Menu Grid */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 70px;
+        }
+
+        .menu-item {
+            background-color: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .menu-item-img {
+            height: 250px;
+            width: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+
+        .menu-item:hover .menu-item-img {
+            transform: scale(1.05);
+        }
+
+        .menu-item-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(to right, #D4AF37, #e6c446);
+            color: #111;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+        }
+
+        .menu-item-content {
+            padding: 25px;
+        }
+
+        .menu-item-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-item-name {
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 1px;
+            color: #222;
+        }
+
+        .menu-item-price {
+            color: #D4AF37;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .menu-item-desc {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .menu-item-features {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .feature-tag {
+            font-size: 12px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            background-color: #f1f1f1;
+            color: #555;
+            transition: all 0.3s ease;
+        }
+
+        .feature-tag:hover {
+            background-color: #D4AF37;
+            color: #fff;
+        }
+
+        /* Menu Detail Modal */
+        .menu-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .menu-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            width: 90%;
+            max-width: 1000px;
+            max-height: 90vh;
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transform: scale(0.9);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .menu-modal.active .modal-content {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            color: #fff;
+            cursor: pointer;
+            z-index: 2001;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: #D4AF37;
+            transform: rotate(90deg);
+        }
+
+        .modal-header {
+            display: flex;
+            position: relative;
+            height: 300px;
+        }
+
+        .modal-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-header-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+            color: #fff;
+        }
+
+        .modal-title {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .modal-subtitle {
+            font-size: 16px;
+            opacity: 0.8;
+        }
+
+        .modal-price {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(to right, #D4AF37, #e6c446);
+            color: #111;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 700;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-body {
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        .modal-section {
+            margin-bottom: 30px;
+        }
+
+        .modal-section-title {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #333;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .modal-section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #D4AF37;
+        }
+
+        .modal-desc {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .nutrition-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .nutrition-item {
+            flex: 1;
+            min-width: 100px;
+            padding: 15px;
+            background-color: #f5f5f5;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .nutrition-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: #D4AF37;
+            margin-bottom: 5px;
+        }
+
+        .nutrition-label {
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .ingredients-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .ingredient {
+            padding: 8px 15px;
+            background-color: #f5f5f5;
+            border-radius: 20px;
+            font-size: 14px;
+            color: #555;
+            transition: all 0.3s ease;
+        }
+
+        .ingredient:hover {
+            background-color: #D4AF37;
+            color: #fff;
+        }
+
+        .customize-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .customize-group {
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        .customize-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .options-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .option-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .option-item input {
+            display: none;
+        }
+
+        .option-item label {
+            padding: 8px 15px;
+            background-color: #f5f5f5;
+            border-radius: 20px;
+            font-size: 14px;
+            color: #555;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .option-item input:checked + label {
+            background-color: #D4AF37;
+            color: #fff;
+        }
+
+        .option-price {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        .quantity-label {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            overflow: hidden;
+        }
+
+        .quantity-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f5f5f5;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quantity-btn:hover {
+            background-color: #D4AF37;
+            color: #fff;
+        }
+
+        .quantity-input {
+            width: 50px;
+            height: 40px;
+            border: none;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .modal-footer {
+            padding: 20px 30px;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .total-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .total-price span {
+            color: #D4AF37;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* AI Suggestions Section */
+        .ai-suggestions {
+            background-color: #f9f9f9;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-suggestions::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0) 50%, rgba(212, 175, 55, 0.1) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .ai-container {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .ai-chat-container {
+            width: 100%;
+            max-width: 800px;
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+
+        .ai-chat-header {
+            background: linear-gradient(to right, #D4AF37, #e6c446);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #111;
+        }
+
+        .ai-icon {
+            font-size: 24px;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        .ai-title {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .ai-chat-body {
+            height: 350px;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .chat-message {
+            max-width: 80%;
+            padding: 15px;
+            border-radius: 15px;
+            line-height: 1.5;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .ai-message {
+            background-color: #f1f1f1;
+            border-bottom-left-radius: 5px;
+            align-self: flex-start;
+        }
+
+        .user-message {
+            background-color: #D4AF37;
+            color: #fff;
+            border-bottom-right-radius: 5px;
+            align-self: flex-end;
+        }
+
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 10px 15px;
+            background-color: #f1f1f1;
+            border-radius: 15px;
+            border-bottom-left-radius: 5px;
+            width: fit-content;
+            align-self: flex-start;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #999;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: typingPulse 1.5s infinite;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes typingPulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+
+        .ai-chat-footer {
+            padding: 15px 20px;
+            border-top: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .ai-input {
+            flex: 1;
+            padding: 12px 20px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .ai-input:focus {
+            border-color: #D4AF37;
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+        }
+
+        .send-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(to right, #D4AF37, #e6c446);
+            color: #111;
+            border: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .send-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .suggestion-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 40px;
+            justify-content: center;
+        }
+
+        .suggestion-chip {
+            padding: 10px 20px;
+            background-color: #fff;
+            border: 1px solid #D4AF37;
+            border-radius: 30px;
+            color: #D4AF37;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .suggestion-chip:hover {
+            background-color: #D4AF37;
+            color: #fff;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(to bottom, #1a1a1a, #111);
+            color: #ccc;
+            position: relative;
+            padding: 80px 0 30px;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, #b39329, #D4AF37, #e6c446);
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo .logo-circle {
+            width: 50px;
+            height: 50px;
+        }
+
+        .footer-logo .initials {
+            font-size: 16px;
+        }
+
+        .footer-logo .logo-text {
+            font-size: 22px;
+        }
+
+        .footer-about p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .footer h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 24px;
+            color: #D4AF37;
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(to right, #b39329, #D4AF37, #e6c446);
+            transition: all 0.5s ease;
+        }
+
+        .footer h3:hover::after {
+            width: 100%;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a::before {
+            content: '\f105';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            margin-right: 10px;
+            color: #D4AF37;
+            transition: all 0.3s ease;
+            transform: translateX(0);
+        }
+
+        .footer-links a:hover {
+            color: #D4AF37;
+        }
+
+        .footer-links a:hover::before {
+            transform: translateX(5px);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info p:hover {
+            transform: translateX(10px);
+        }
+
+        .contact-info i {
+            width: 40px;
+            height: 40px;
+            background: rgba(212, 175, 55, 0.2);
+            color: #D4AF37;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info p:hover i {
+            background: #D4AF37;
+            color: #111;
+            transform: scale(1.1);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(145deg, #222, #1a1a1a);
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2), 
+                        -5px -5px 10px rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ccc;
+            font-size: 18px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(to right, #b39329, #D4AF37);
+            transition: all 0.4s ease;
+            z-index: -1;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.1);
+            color: #111;
+        }
+
+        .social-link:hover::before {
+            width: 100%;
+        }
+
+        .social-link:hover i {
+            transform: rotate(360deg);
+        }
+
+        .social-link i {
+            transition: all 0.6s ease;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 50px;
+            color: #777;
+            font-size: 14px;
+            position: relative;
+        }
+
+        .copyright::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(to right, 
+                                        rgba(255, 255, 255, 0.05), 
+                                        rgba(255, 255, 255, 0.1), 
+                                        rgba(255, 255, 255, 0.05));
+        }
+
+        .copyright a {
+            color: #D4AF37;
+            transition: all 0.3s ease;
+        }
+
+        .copyright a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 40px;
+            }
+
+            .menu-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 992px) {
+            .nav-links, .nav-icons {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 70px;
+            }
+
+            .section-title {
+                font-size: 42px;
+            }
+
+            .modal-header {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .navbar {
+                padding: 15px 20px;
+            }
+
+            .navbar.scrolled {
+                padding: 10px 20px;
+            }
+
+            .hero h1 {
+                font-size: 50px;
+                letter-spacing: 5px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .menu-page {
+                padding-top: 80px;
+                padding-bottom: 80px;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .ai-suggestions {
+                padding: 60px 0;
+            }
+
+            .suggestion-chips {
+                margin-top: 30px;
+            }
+
+            .modal-header {
+                height: 200px;
+            }
+
+            .modal-title {
+                font-size: 28px;
+            }
+
+            .nutrition-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .nutrition-item {
+                width: 100%;
+            }
+
+            .modal-footer {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .action-buttons {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .logo-text {
+                font-size: 24px;
+            }
+
+            .logo-circle {
+                width: 50px;
+                height: 50px;
+            }
+
+            .initials {
+                font-size: 16px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+                letter-spacing: 3px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .ai-chat-body {
+                height: 300px;
+            }
+
+            .chat-message {
+                max-width: 90%;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <a href="index.html" class="logo-circle">
+                <span class="initials">FP</span>
+            </a>
+            <a href="index.html" class="logo-text">La Fettuccine Papa</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="menu.html" class="nav-link active">Menu</a></li>
+            <li><a href="sustainability.html" class="nav-link">Sustainability</a></li>
+            <li><a href="reservations.html" class="nav-link">Reservations</a></li>
+        </ul>
+        <div class="nav-icons">
+            <a href="reservations.html" class="book-btn">Reserve a Table</a>
+        </div>
+        <div class="mobile-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="mobile-menu">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="menu.html" class="nav-link">Menu</a>
+            <a href="sustainability.html" class="nav-link">Sustainability</a>
+            <a href="reservations.html" class="nav-link">Reservations</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Our Menu</h1>
+            <p>Discover our selection of authentic Italian dishes made with locally-sourced, sustainable ingredients. Each dish is crafted with passion, tradition, and a touch of innovation.</p>
+            <a href="#menu-items" class="btn btn-primary hero-btn">Explore Menu</a>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu-items" class="menu-page">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Benvenuti a La Fettuccine Papa</h2>
+                <p class="section-subtitle">Authentic Italian cuisine with a modern twist, using the freshest seasonal ingredients. All of our dishes are prepared fresh to order with care and attention to detail.</p>
+            </div>
+
+            <!-- Menu Filters -->
+            <div class="menu-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="appetizers">Appetizers</button>
+                <button class="filter-btn" data-filter="pasta">Pasta</button>
+                <button class="filter-btn" data-filter="mains">Mains</button>
+                <button class="filter-btn" data-filter="salads">Salads</button>
+                <button class="filter-btn" data-filter="desserts">Desserts</button>
+                <button class="filter-btn" data-filter="drinks">Drinks</button>
+            </div>
+
+            <!-- Menu Grid -->
+            <div class="menu-grid">
+                <!-- Appetizers -->
+                <div class="menu-item" data-category="appetizers" data-id="1">
+                    <div class="menu-item-badge">Chef's Special</div>
+                    <img src="https://images.unsplash.com/photo-1625944230945-1b7dd3c211ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Bruschetta" class="menu-item-img">
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3 class="menu-item-name">Bruschetta Classica</h3>
+                            <span class="menu-item-price">$12</span>
+                        </div>
+                        <p class="menu-item-desc">Toasted artisanal bread topped with ripe tomatoes, fresh basil, garlic, and extra virgin olive oil.</p>
+                        <div class="menu-item-features">
+                            <span class="feature-tag">Vegetarian</span>
+                            <span class="feature-tag">Locally Sourced</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="appetizers" data-id="2">
+                    <img src="https://images.unsplash.com/photo-1604323999632-6a5e5fcaa5f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Arancini" class="menu-item-img">
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3 class="menu-item-name">Arancini al Tartufo</h3>
+                            <span class="menu-item-price">$14</span>
+                        </div>
+                        <p class="menu-item-desc">Crispy risotto balls filled with wild mushrooms, truffle, and mozzarella, served with truffle aioli.</p>
+                        <div class="menu-item-features">
+                            <span class="feature-tag">Vegetarian</span>
+                            <span class="feature-tag">Signature Dish</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="appetizers" data-id="3">
+                    <img src="https://images.unsplash.com/photo-1595295333158-4742f28fbd85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1780&q=80" alt="Caprese" class="menu-item-img">
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3 class="menu-item-name">Caprese di Bufala</h3>
+                            <span class="menu-item-price">$16</span>
+                        </div>
+                        <p class="menu-item-desc">Heirloom tomatoes, fresh buffalo mozzarella, basil, extra virgin olive oil, and balsamic glaze.</p>
+                        <div class="menu-item-features">
+                            <span class="feature-tag">Vegetarian</span>
+                            <span class="feature-tag">Gluten-Free</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pasta -->
+                <div class="menu-item" data-category="pasta" data-id="4">
+                    <div class="menu-item-badge">Most Popular</div>
+                    <img src="https://images.unsplash.com/photo-1608897013039-887f21d8c804?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1792&q=80" alt="Fettuccine Alfredo" class="menu-item-img">
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3 class="menu-item-name">Fettuccine Alfredo</h3>
+                            <span class="menu-item-price">$22</span>
+                        </div>
+                        <p class="menu-item-desc">Homemade fettuccine tossed in a creamy Parmesan sauce with black pepper and nutmeg. Our signature dish.</p>
+                        <div class="menu-item-features">
+                            <span class="feature-tag">Vegetarian</span>
+                            <span class="feature-tag">House Special</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="pasta" data-id="5">
+                    <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Spaghetti al Pomodoro" class="menu-item-img">
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3 class="menu-item-name">Spaghetti al Pomodoro</h3>
+                            <span class="menu-item-price">$18</span>
+                        </div>
+                        <p class="menu-item-desc">Classic spaghetti with San Marzano tomato sauce, garlic, fresh basil, and extra virgin olive oil.</p>
+                        <div class="menu-item-features">
+                            <span class="feature-tag">Vegan</span>
+                            <span class="feature-tag">Classic</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="pasta" data-id="6">
+                    <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1780&q=80" alt="Risotto ai Funghi" class="menu-item-img">
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3 class="menu-item-name">Risotto ai Funghi</h3>
+                            <span class="menu-item-price">$24</span>
+                        </div>
+                        <p class="menu-item-desc">Creamy Arborio rice with wild mushrooms, white wine, and Parmigiano-Reggiano, finished with truffle oil.</p>
+                        <div class="menu-item-features">
+                            <span class="feature-tag">Vegetarian</span>
+                            <span class="feature-tag">Gluten-Free</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mains -->
+                <div class="menu-item" data-category="mains" data-id="7">
+                    <img src="https://images.unsplash.com/photo-1536489885071-87983c3e2859?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1708&q=80" alt="Eggplant Parmigiana" class="menu-item-img">
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3 class="menu-item-name">Melanzane alla Parmigiana</h3>
+                            <span class="menu-item-price">$20</span>
+                        </div>
+                        <p class="menu-item-desc">Layers of roasted eggplant, tomato sauce, fresh mozzarella, and basil, baked to perfection.</p>
+                        <div class="menu-item-features">
+                            <span class="feature-tag">Vegetarian</span>
+                            <span class="feature-tag">Traditional</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="mains" data-id="8">
+                    <div class="menu-item-badge">Seasonal</div>
+                    <img src="https://images.unsplash.com/photo-1598866594230-a7c12756260f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1708&q=80" alt="Gnocchi" class="menu-item-img">
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3 class="menu-item-name">Gnocchi alla Sorrentina</h3>
+                            <span class="menu-item-price">$21</span>
+                        </div>
+                        <p class="menu-item-desc">Handmade potato gnocchi in a rich tomato sauce with fresh mozzarella, basil, and Parmesan.</p>
+                        <div class="menu-item-features">
+                            <span class="feature-tag">Vegetarian</span>
+                            <span class="feature-tag">Handmade</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Salads -->
+                <div class="menu-item" data-category="salads" data-id="9">
+                    <img src="https://images.unsplash.com/photo-1505253758473-96b7015fcd40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1742&q=80" alt="Insalata Mista" class="menu-item-img">
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3 class="menu-item-name">Insalata Mista</h3>
+                            <span class="menu-item-price">$14</span>
+                        </div>
+                        <p class="menu-item-desc">Mixed seasonal greens, cherry tomatoes, cucumber, red onion, and balsamic vinaigrette.</p>
+                        <div class="menu-item-features">
+                            <span class="feature-tag">Vegan</span>
+                            <span class="feature-tag">Gluten-Free</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="salads" data-id="10">
+                    <img src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Insalata di Rucola" class="menu-item-img">
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3 class="menu-item-name">Insalata di Rucola</h3>
+                            <span class="menu-item-price">$16</span>
+                        </div>
+                        <p class="menu-item-desc">Fresh arugula with shaved Parmesan, pine nuts, cherry tomatoes, and lemon olive oil dressing.</p>
+                        <div class="menu-item-features">
+                            <span class="feature-tag">Vegetarian</span>
+                            <span class="feature-tag">Light</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Desserts -->
+                <div class="menu-item" data-category="desserts" data-id="11">
+                    <div class="menu-item-badge">Chef's Favorite</div>
+                    <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1744&q=80" alt="Tiramisu" class="menu-item-img">
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3 class="menu-item-name">Tiramisu Classico</h3>
+                            <span class="menu-item-price">$12</span>
+                        </div>
+                        <p class="menu-item-desc">Traditional tiramisu with layers of espresso-soaked ladyfingers and mascarpone cream.</p>
+                        <div class="menu-item-features">
+                            <span class="feature-tag">Vegetarian</span>
+                            <span class="feature-tag">Classic</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="desserts" data-id="12">
+                    <img src="https://images.unsplash.com/photo-1488477304112-4944851de03d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Panna Cotta" class="menu-item-img">
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3 class="menu-item-name">Panna Cotta ai Frutti</h3>
+                            <span class="menu-item-price">$10</span>
+                        </div>
+                        <p class="menu-item-desc">Silky vanilla panna cotta topped with seasonal fruit compote and fresh berries.</p>
+                        <div class="menu-item-features">
+                            <span class="feature-tag">Vegetarian</span>
+                            <span class="feature-tag">Gluten-Free</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Drinks -->
+                <div class="menu-item" data-category="drinks" data-id="13">
+                    <img src="https://images.unsplash.com/photo-1588483977150-9c2127ab7bcc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80" alt="San Pellegrino" class="menu-item-img">
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3 class="menu-item-name">San Pellegrino</h3>
+                            <span class="menu-item-price">$6</span>
+                        </div>
+                        <p class="menu-item-desc">Premium Italian sparkling mineral water, served with a slice of lemon.</p>
+                        <div class="menu-item-features">
+                            <span class="feature-tag">Sparkling</span>
+                            <span class="feature-tag">Refreshing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="drinks" data-id="14">
+                    <img src="https://images.unsplash.com/photo-1550645612-83f5d594b671?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Fresh Juice" class="menu-item-img">
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3 class="menu-item-name">Succo Fresco</h3>
+                            <span class="menu-item-price">$8</span>
+                        </div>
+                        <p class="menu-item-desc">Freshly squeezed seasonal fruit juices. Ask your server for today's selections.</p>
+                        <div class="menu-item-features">
+                            <span class="feature-tag">Vegan</span>
+                            <span class="feature-tag">Seasonal</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-category="drinks" data-id="15">
+                    <div class="menu-item-badge">House Special</div>
+                    <img src="https://images.unsplash.com/photo-1596097635121-14b8177be5aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Italian Soda" class="menu-item-img">
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">
+                            <h3 class="menu-item-name">Limonata Fresca</h3>
+                            <span class="menu-item-price">$7</span>
+                        </div>
+                        <p class="menu-item-desc">Housemade Italian-style lemonade with fresh lemons, basil, and a touch of honey.</p>
+                        <div class="menu-item-features">
+                            <span class="feature-tag">Signature</span>
+                            <span class="feature-tag">Refreshing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Suggestions Section -->
+    <section class="ai-suggestions">
+        <div class="container ai-container">
+            <div class="section-header">
+                <h2 class="section-title">Let Us Help You Choose</h2>
+                <p class="section-subtitle">Not sure what to order? Our AI assistant can recommend dishes based on your preferences, dietary requirements, or mood.</p>
+            </div>
+
+            <div class="ai-chat-container">
+                <div class="ai-chat-header">
+                    <i class="fas fa-robot ai-icon"></i>
+                    <h3 class="ai-title">Fettuccine Papa Assistant</h3>
+                </div>
+                <div class="ai-chat-body">
+                    <div class="chat-message ai-message">
+                        Buongiorno! I'm your personal menu assistant. How can I help you choose the perfect dish today?
+                    </div>
+                    <div class="chat-message user-message">
+                        I'm vegetarian and I love mushrooms. What do you recommend?
+                    </div>
+                    <div class="chat-message ai-message">
+                        Excellent choice! I'd recommend our Risotto ai Funghi - it's a creamy Arborio rice dish with wild mushrooms, white wine, and Parmigiano-Reggiano, finished with truffle oil. For an appetizer, the Arancini al Tartufo would complement it perfectly!
+                    </div>
+                </div>
+                <div class="ai-chat-footer">
+                    <input type="text" class="ai-input" placeholder="Ask for recommendations...">
+                    <button class="send-btn"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+
+            <div class="suggestion-chips">
+                <div class="suggestion-chip">I'm vegetarian</div>
+                <div class="suggestion-chip">Gluten-free options?</div>
+                <div class="suggestion-chip">What's your signature dish?</div>
+                <div class="suggestion-chip">I'm in the mood for pasta</div>
+                <div class="suggestion-chip">Something light please</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <div class="logo-circle">
+                        <span class="initials">FP</span>
+                    </div>
+                    <span class="logo-text">La Fettuccine Papa</span>
+                </div>
+                <p>Authentic Italian cuisine with a focus on sustainable, locally-sourced ingredients. Our passion for food and hospitality has been at the heart of what we do since 2010.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-yelp"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links-container">
+                <h3>Quick Links</h3>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="menu.html">Menu</a>
+                    <a href="sustainability.html">Sustainability</a>
+                    <a href="reservations.html">Reservations</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+
+            <div class="footer-hours">
+                <h3>Opening Hours</h3>
+                <div class="footer-links">
+                    <a>Monday - Friday: 11:30AM - 10:00PM</a>
+                    <a>Saturday: 11:00AM - 11:00PM</a>
+                    <a>Sunday: 11:00AM - 9:00PM</a>
+                </div>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <div class="contact-info">
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Pasta Street, Foodville, CA 90210</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@lafettuccinepapa.com</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2025 La Fettuccine Papa. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <!-- Menu Detail Modal -->
+    <div class="menu-modal" id="menu-modal">
+        <span class="modal-close"><i class="fas fa-times"></i></span>
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="" alt="" class="modal-img" id="modal-img">
+                <div class="modal-header-overlay">
+                    <h2 class="modal-title" id="modal-title"></h2>
+                    <p class="modal-subtitle" id="modal-subtitle"></p>
+                </div>
+                <div class="modal-price" id="modal-price"></div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Description</h3>
+                    <p class="modal-desc" id="modal-desc"></p>
+                </div>
+
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Nutrition Information</h3>
+                    <div class="nutrition-info" id="nutrition-info">
+                        <!-- Will be populated dynamically -->
+                    </div>
+                </div>
+
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Ingredients</h3>
+                    <div class="ingredients-list" id="ingredients-list">
+                        <!-- Will be populated dynamically -->
+                    </div>
+                </div>
+
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Customize Your Dish</h3>
+                    <div class="customize-options" id="customize-options">
+                        <!-- Will be populated dynamically -->
+                    </div>
+                </div>
+
+                <div class="quantity-selector">
+                    <span class="quantity-label">Quantity:</span>
+                    <div class="quantity-controls">
+                        <button class="quantity-btn" id="decrease-quantity">-</button>
+                        <input type="number" class="quantity-input" id="quantity-input" value="1" min="1" max="10">
+                        <button class="quantity-btn" id="increase-quantity">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="total-price" id="total-price">Total: <span>$0.00</span></div>
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" id="add-to-favorites">Add to Favorites</button>
+                    <button class="btn btn-primary" id="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DOM Elements
+        const navbar = document.querySelector('.navbar');
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const menuItems = document.querySelectorAll('.menu-item');
+        const menuModal = document.getElementById('menu-modal');
+        const modalClose = document.querySelector('.modal-close');
+        const decreaseQuantityBtn = document.getElementById('decrease-quantity');
+        const increaseQuantityBtn = document.getElementById('increase-quantity');
+        const quantityInput = document.getElementById('quantity-input');
+        const addToCartBtn = document.getElementById('add-to-cart');
+        const addToFavoritesBtn = document.getElementById('add-to-favorites');
+        const suggestionChips = document.querySelectorAll('.suggestion-chip');
+        const aiInput = document.querySelector('.ai-input');
+        const sendBtn = document.querySelector('.send-btn');
+        const aiChatBody = document.querySelector('.ai-chat-body');
+
+        // Menu Items Data
+        const menuItemsData = [
+            {
+                id: 1,
+                name: "Bruschetta Classica",
+                category: "appetizers",
+                price: 12,
+                badge: "Chef's Special",
+                description: "Our Bruschetta Classica is a celebration of simple, fresh ingredients. We start with artisanal sourdough bread that's grilled to perfection, then rub it with garlic cloves to infuse it with flavor. The bread is then topped with a vibrant mixture of diced ripe tomatoes, fresh basil, and a drizzle of our premium extra virgin olive oil imported from Tuscany. A finishing touch of sea salt and cracked black pepper enhances all the flavors. This traditional Italian antipasto is the perfect way to begin your meal.",
+                features: ["Vegetarian", "Locally Sourced"],
+                image: "https://images.unsplash.com/photo-1625944230945-1b7dd3c211ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
+                nutrition: {
+                    calories: 220,
+                    protein: 4,
+                    carbs: 28,
+                    fat: 11
+                },
+                ingredients: ["Artisanal Sourdough Bread", "Organic Tomatoes", "Fresh Basil", "Extra Virgin Olive Oil", "Garlic", "Sea Salt", "Black Pepper"],
+                customizeOptions: [
+                    {
+                        title: "Base Options",
+                        type: "radio",
+                        options: [
+                            {name: "Regular Sourdough", price: 0},
+                            {name: "Gluten-Free Bread", price: 2}
+                        ]
+                    },
+                    {
+                        title: "Additional Toppings",
+                        type: "checkbox",
+                        options: [
+                            {name: "Balsamic Glaze", price: 1},
+                            {name: "Pesto Drizzle", price: 2},
+                            {name: "Vegan Cheese", price: 2}
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 2,
+                name: "Arancini al Tartufo",
+                category: "appetizers",
+                price: 14,
+                badge: "",
+                description: "Our Arancini al Tartufo are luxurious Sicilian-style risotto balls that are a true labor of love. We begin with Arborio rice cooked slowly in vegetable broth until it reaches a creamy consistency. The risotto is then enriched with wild forest mushrooms, truffle paste, and Parmigiano-Reggiano, formed into balls with a center of melted mozzarella, then coated in breadcrumbs and fried to golden perfection. Served with a side of truffle aioli, these arancini offer a delightful contrast of crispy exterior and creamy, flavorful interior.",
+                features: ["Vegetarian", "Signature Dish"],
+                image: "https://images.unsplash.com/photo-1604323999632-6a5e5fcaa5f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
+                nutrition: {
+                    calories: 320,
+                    protein: 12,
+                    carbs: 36,
+                    fat: 15
+                },
+                ingredients: ["Arborio Rice", "Wild Mushrooms", "Truffle Paste", "Mozzarella", "Parmigiano-Reggiano", "Breadcrumbs", "Vegetable Broth", "Garlic", "Parsley"],
+                customizeOptions: [
+                    {
+                        title: "Sauce Options",
+                        type: "radio",
+                        options: [
+                            {name: "Truffle Aioli", price: 0},
+                            {name: "Spicy Tomato Sauce", price: 0},
+                            {name: "Pesto Sauce", price: 1}
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 3,
+                name: "Caprese di Bufala",
+                category: "appetizers",
+                price: 16,
+                badge: "",
+                description: "The Caprese di Bufala is our tribute to the iconic Italian salad that represents the colors of the Italian flag. We use only the finest imported buffalo mozzarella from Campania, known for its delicate flavor and soft texture. It's paired with juicy heirloom tomatoes and fresh basil leaves from our organic garden. The salad is dressed simply with our house-aged balsamic glaze and cold-pressed extra virgin olive oil, allowing the quality of each ingredient to shine through. A sprinkle of Maldon sea salt and freshly ground black pepper completes this classic dish.",
+                features: ["Vegetarian", "Gluten-Free"],
+                image: "https://images.unsplash.com/photo-1595295333158-4742f28fbd85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1780&q=80",
+                nutrition: {
+                    calories: 290,
+                    protein: 15,
+                    carbs: 10,
+                    fat: 22
+                },
+                ingredients: ["Buffalo Mozzarella", "Heirloom Tomatoes", "Fresh Basil", "Extra Virgin Olive Oil", "Balsamic Glaze", "Sea Salt", "Black Pepper"],
+                customizeOptions: [
+                    {
+                        title: "Add-ons",
+                        type: "checkbox",
+                        options: [
+                            {name: "Avocado", price: 3},
+                            {name: "Arugula", price: 2},
+                            {name: "Pine Nuts", price: 2}
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 4,
+                name: "Fettuccine Alfredo",
+                category: "pasta",
+                price: 22,
+                badge: "Most Popular",
+                description: "Our signature Fettuccine Alfredo is the cornerstone of our menu, a dish that honors the simplicity and elegance of classic Italian cooking. We make our fettuccine pasta fresh daily, using only premium semolina flour and farm-fresh eggs. The sauce is a velvety blend of European butter, heavy cream, and aged Parmigiano-Reggiano, seasoned with freshly ground black pepper and a hint of nutmeg. The result is a luxuriously creamy pasta that exemplifies the 'less is more' philosophy of Italian cuisine, where quality ingredients and proper technique create something truly special.",
+                features: ["Vegetarian", "House Special"],
+                image: "https://images.unsplash.com/photo-1608897013039-887f21d8c804?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1792&q=80",
+                nutrition: {
+                    calories: 650,
+                    protein: 20,
+                    carbs: 58,
+                    fat: 38
+                },
+                ingredients: ["Homemade Fettuccine", "European Butter", "Heavy Cream", "Parmigiano-Reggiano", "Black Pepper", "Nutmeg"],
+                customizeOptions: [
+                    {
+                        title: "Pasta Options",
+                        type: "radio",
+                        options: [
+                            {name: "Regular Fettuccine", price: 0},
+                            {name: "Gluten-Free Pasta", price: 3},
+                            {name: "Whole Wheat Pasta", price: 2}
+                        ]
+                    },
+                    {
+                        title: "Add Vegetables",
+                        type: "checkbox",
+                        options: [
+                            {name: "Sautéed Mushrooms", price: 3},
+                            {name: "Roasted Bell Peppers", price: 2},
+                            {name: "Sautéed Spinach", price: 2},
+                            {name: "Grilled Zucchini", price: 2}
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 5,
+                name: "Spaghetti al Pomodoro",
+                category: "pasta",
+                price: 18,
+                badge: "",
+                description: "Spaghetti al Pomodoro is Italian simplicity at its finest. Our homemade spaghetti is cooked to perfect al dente texture and tossed with a sauce made from San Marzano tomatoes, known for their sweet flavor and low acidity. The tomatoes are gently simmered with garlic, extra virgin olive oil, and fresh basil to create a bright, aromatic sauce that coats each strand of pasta. The dish is finished with hand-torn fresh basil leaves and a drizzle of our finest olive oil. This timeless classic demonstrates how a few quality ingredients can create a truly memorable dining experience.",
+                features: ["Vegan", "Classic"],
+                image: "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
+                nutrition: {
+                    calories: 480,
+                    protein: 14,
+                    carbs: 86,
+                    fat: 10
+                },
+                ingredients: ["Homemade Spaghetti", "San Marzano Tomatoes", "Garlic", "Fresh Basil", "Extra Virgin Olive Oil", "Sea Salt"],
+                customizeOptions: [
+                    {
+                        title: "Pasta Options",
+                        type: "radio",
+                        options: [
+                            {name: "Regular Spaghetti", price: 0},
+                            {name: "Gluten-Free Pasta", price: 3},
+                            {name: "Whole Wheat Pasta", price: 2}
+                        ]
+                    },
+                    {
+                        title: "Add-ons",
+                        type: "checkbox",
+                        options: [
+                            {name: "Vegan Parmesan", price: 2},
+                            {name: "Chili Flakes", price: 0},
+                            {name: "Roasted Garlic", price: 2}
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 6,
+                name: "Risotto ai Funghi",
+                category: "pasta",
+                price: 24,
+                badge: "",
+                description: "Our Risotto ai Funghi showcases the art of patient cooking and the earthy flavors of wild mushrooms. We use premium Arborio rice, prized for its ability to release starch and create the signature creamy texture of risotto while maintaining a firm bite. The rice is slowly cooked with white wine and vegetable broth, with each addition of liquid being absorbed before adding more. A medley of seasonal wild mushrooms—including porcini, shiitake, and oyster—provides rich umami flavor. The risotto is finished with Parmigiano-Reggiano and a light drizzle of white truffle oil, creating a luxurious dish that exemplifies comfort and elegance.",
+                features: ["Vegetarian", "Gluten-Free"],
+                image: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1780&q=80",
+                nutrition: {
+                    calories: 520,
+                    protein: 12,
+                    carbs: 68,
+                    fat: 18
+                },
+                ingredients: ["Arborio Rice", "Wild Mushrooms", "White Wine", "Vegetable Broth", "Parmigiano-Reggiano", "Truffle Oil", "Shallots", "Garlic", "Parsley"],
+                customizeOptions: [
+                    {
+                        title: "Additions",
+                        type: "checkbox",
+                        options: [
+                            {name: "Extra Truffle Oil", price: 3},
+                            {name: "Roasted Asparagus", price: 3},
+                            {name: "Sautéed Spinach", price: 2}
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 7,
+                name: "Melanzane alla Parmigiana",
+                category: "mains",
+                price: 20,
+                badge: "",
+                description: "Melanzane alla Parmigiana is a beloved Italian classic that celebrates the versatility of eggplant. We select the finest Italian eggplants, slice them, and lightly salt them to remove any bitterness. The eggplant slices are then roasted rather than fried, maintaining their delicate flavor while reducing the oil content. These roasted slices are layered with our house-made San Marzano tomato sauce, fresh mozzarella, basil, and Parmigiano-Reggiano, then baked until bubbling and golden. The result is a harmonious dish with layers of complementary flavors and textures—tender eggplant, tangy tomato sauce, and creamy, melted cheese.",
+                features: ["Vegetarian", "Traditional"],
+                image: "https://images.unsplash.com/photo-1536489885071-87983c3e2859?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1708&q=80",
+                nutrition: {
+                    calories: 420,
+                    protein: 18,
+                    carbs: 26,
+                    fat: 28
+                },
+                ingredients: ["Italian Eggplant", "San Marzano Tomatoes", "Fresh Mozzarella", "Parmigiano-Reggiano", "Fresh Basil", "Garlic", "Extra Virgin Olive Oil", "Sea Salt", "Black Pepper"],
+                customizeOptions: [
+                    {
+                        title: "Side Options",
+                        type: "radio",
+                        options: [
+                            {name: "Mixed Greens Salad", price: 0},
+                            {name: "Garlic Bread", price: 0},
+                            {name: "Roasted Potatoes", price: 2}
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 8,
+                name: "Gnocchi alla Sorrentina",
+                category: "mains",
+                price: 21,
+                badge: "Seasonal",
+                description: "Our Gnocchi alla Sorrentina features pillowy potato dumplings made fresh daily in our kitchen. We use only the finest starchy potatoes, which are baked rather than boiled to reduce moisture content, resulting in exceptionally light gnocchi. These delicate dumplings are tossed in a vibrant tomato sauce made from San Marzano tomatoes, garlic, and fresh basil. The dish is then topped with cubes of fresh mozzarella and baked until the cheese is melted and bubbling. A sprinkle of Parmigiano-Reggiano and fresh basil completes this comforting and satisfying Italian classic.",
+                features: ["Vegetarian", "Handmade"],
+                image: "https://images.unsplash.com/photo-1598866594230-a7c12756260f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1708&q=80",
+                nutrition: {
+                    calories: 480,
+                    protein: 16,
+                    carbs: 62,
+                    fat: 18
+                },
+                ingredients: ["Handmade Potato Gnocchi", "San Marzano Tomatoes", "Fresh Mozzarella", "Parmigiano-Reggiano", "Fresh Basil", "Garlic", "Extra Virgin Olive Oil"],
+                customizeOptions: [
+                    {
+                        title: "Sauce Options",
+                        type: "radio",
+                        options: [
+                            {name: "Classic Tomato", price: 0},
+                            {name: "Pink Sauce", price: 2},
+                            {name: "Pesto", price: 2}
+                        ]
+                    },
+                    {
+                        title: "Add-ons",
+                        type: "checkbox",
+                        options: [
+                            {name: "Roasted Cherry Tomatoes", price: 2},
+                            {name: "Sautéed Spinach", price: 2},
+                            {name: "Truffle Oil Drizzle", price: 3}
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 9,
+                name: "Insalata Mista",
+                category: "salads",
+                price: 14,
+                badge: "",
+                description: "Our Insalata Mista is a vibrant mix of fresh, seasonal greens and vegetables that changes with what's available from our local farm partners. The current version features a mix of tender lettuces, peppery arugula, sweet cherry tomatoes, crisp cucumber, and thinly sliced red onion. The salad is lightly dressed with our house-made balsamic vinaigrette, crafted from aged balsamic vinegar and premium extra virgin olive oil. Simple, refreshing, and the perfect accompaniment to any meal or enjoyed on its own.",
+                features: ["Vegan", "Gluten-Free"],
+                image: "https://images.unsplash.com/photo-1505253758473-96b7015fcd40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1742&q=80",
+                nutrition: {
+                    calories: 180,
+                    protein: 3,
+                    carbs: 12,
+                    fat: 14
+                },
+                ingredients: ["Mixed Seasonal Greens", "Cherry Tomatoes", "Cucumber", "Red Onion", "Aged Balsamic Vinegar", "Extra Virgin Olive Oil", "Sea Salt", "Black Pepper"],
+                customizeOptions: [
+                    {
+                        title: "Dressing Options",
+                        type: "radio",
+                        options: [
+                            {name: "Balsamic Vinaigrette", price: 0},
+                            {name: "Lemon Olive Oil", price: 0},
+                            {name: "Italian Herb Dressing", price: 0}
+                        ]
+                    },
+                    {
+                        title: "Add-ons",
+                        type: "checkbox",
+                        options: [
+                            {name: "Avocado", price: 3},
+                            {name: "Roasted Peppers", price: 2},
+                            {name: "Artichoke Hearts", price: 2},
+                            {name: "Olives", price: 2},
+                            {name: "Pine Nuts", price: 2}
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 10,
+                name: "Insalata di Rucola",
+                category: "salads",
+                price: 16,
+                badge: "",
+                description: "The Insalata di Rucola highlights the distinctive peppery flavor of fresh arugula. The tender young leaves are topped with thin shavings of aged Parmigiano-Reggiano, adding a salty, umami element. Toasted pine nuts provide a buttery crunch, while sweet cherry tomatoes offer bursts of juicy freshness. The salad is dressed with a simple but elegant lemon and olive oil dressing that enhances the natural flavors of the ingredients without overwhelming them. Light yet satisfying, this salad embodies the Italian approach to fresh, quality ingredients.",
+                features: ["Vegetarian", "Light"],
+                image: "https://images.unsplash.com/photo-1619566636858-adf3ef46400b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
+                nutrition: {
+                    calories: 240,
+                    protein: 8,
+                    carbs: 8,
+                    fat: 20
+                },
+                ingredients: ["Fresh Arugula", "Parmigiano-Reggiano", "Pine Nuts", "Cherry Tomatoes", "Lemon", "Extra Virgin Olive Oil", "Sea Salt", "Black Pepper"],
+                customizeOptions: [
+                    {
+                        title: "Add-ons",
+                        type: "checkbox",
+                        options: [
+                            {name: "Avocado", price: 3},
+                            {name: "Roasted Beets", price: 2},
+                            {name: "Balsamic Glaze", price: 1}
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 11,
+                name: "Tiramisu Classico",
+                category: "desserts",
+                price: 12,
+                badge: "Chef's Favorite",
+                description: "Our Tiramisu Classico is made according to a traditional recipe from northern Italy. Layers of espresso-soaked ladyfinger biscuits alternate with a light, airy mixture of mascarpone cheese, eggs, and sugar. We use our own house-blended espresso for a deep, complex coffee flavor, and dust the top with premium cocoa powder. The dessert is allowed to set for 24 hours before serving, allowing the flavors to meld and develop. The result is a perfect balance of coffee, cream, and cocoa—not too sweet, with just the right amount of moisture in the ladyfingers.",
+                features: ["Vegetarian", "Classic"],
+                image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1744&q=80",
+                nutrition: {
+                    calories: 380,
+                    protein: 6,
+                    carbs: 42,
+                    fat: 20
+                },
+                ingredients: ["Ladyfinger Biscuits", "Mascarpone Cheese", "Eggs", "Sugar", "Espresso", "Cocoa Powder"],
+                customizeOptions: [
+                    {
+                        title: "Add-ons",
+                        type: "checkbox",
+                        options: [
+                            {name: "Fresh Berries", price: 3},
+                            {name: "Chocolate Shavings", price: 2},
+                            {name: "Amaretto Drizzle", price: 2}
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 12,
+                name: "Panna Cotta ai Frutti",
+                category: "desserts",
+                price: 10,
+                badge: "",
+                description: "Our Panna Cotta ai Frutti is a study in delicate textures and pure flavors. This classic Italian dessert features a silky vanilla-infused cream that's gently set with just enough gelatin to hold its shape while maintaining a luxurious mouthfeel. Each panna cotta is topped with a seasonal fruit compote that varies throughout the year—from strawberries and cherries in the summer to poached pears and citrus in the winter. Fresh berries and a light dusting of powdered sugar complete this elegant dessert that's at once simple and sophisticated.",
+                features: ["Vegetarian", "Gluten-Free"],
+                image: "https://images.unsplash.com/photo-1488477304112-4944851de03d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80",
+                nutrition: {
+                    calories: 320,
+                    protein: 4,
+                    carbs: 32,
+                    fat: 18
+                },
+                ingredients: ["Heavy Cream", "Vanilla Bean", "Sugar", "Gelatin", "Seasonal Fruits", "Fresh Berries"],
+                customizeOptions: [
+                    {
+                        title: "Topping Options",
+                        type: "radio",
+                        options: [
+                            {name: "Seasonal Fruit Compote", price: 0},
+                            {name: "Caramel Sauce", price: 0},
+                            {name: "Chocolate Ganache", price: 0}
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 13,
+                name: "San Pellegrino",
+                category: "drinks",
+                price: 6,
+                badge: "",
+                description: "San Pellegrino is a premium Italian sparkling mineral water sourced from natural springs in the Italian Alps. Known for its subtle mineral content and fine, gentle bubbles, it's the perfect refreshment to cleanse the palate between courses or to accompany your meal. We serve it chilled with a slice of lemon for a touch of citrus aroma that enhances its crisp character.",
+                features: ["Sparkling", "Refreshing"],
+                image: "https://images.unsplash.com/photo-1588483977150-9c2127ab7bcc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80",
+                nutrition: {
+                    calories: 0,
+                    protein: 0,
+                    carbs: 0,
+                    fat: 0
+                },
+                ingredients: ["Natural Sparkling Mineral Water", "Lemon Slice"],
+                customizeOptions: [
+                    {
+                        title: "Serving Options",
+                        type: "radio",
+                        options: [
+                            {name: "With Lemon", price: 0},
+                            {name: "With Lime", price: 0},
+                            {name: "Plain", price: 0}
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 14,
+                name: "Succo Fresco",
+                category: "drinks",
+                price: 8,
+                badge: "",
+                description: "Our Succo Fresco offers the vibrant taste of freshly squeezed seasonal fruits. We select only the ripest, juiciest fruits for our juices, which are pressed to order to preserve their vitamins, nutrients, and fresh flavor. The selection changes based on what's in season, but may include orange, grapefruit, apple, pear, or mixed berries. No sugar or preservatives are added—just pure, refreshing fruit juice that's both delicious and nutritious.",
+                features: ["Vegan", "Seasonal"],
+                image: "https://images.unsplash.com/photo-1550645612-83f5d594b671?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
+                nutrition: {
+                    calories: 120,
+                    protein: 1,
+                    carbs: 30,
+                    fat: 0
+                },
+                ingredients: ["Seasonal Fruits (varies)"],
+                customizeOptions: [
+                    {
+                        title: "Juice Options",
+                        type: "radio",
+                        options: [
+                            {name: "Orange", price: 0},
+                            {name: "Grapefruit", price: 0},
+                            {name: "Mixed Berries", price: 2},
+                            {name: "Seasonal Special", price: 2}
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 15,
+                name: "Limonata Fresca",
+                category: "drinks",
+                price: 7,
+                badge: "House Special",
+                description: "Our Limonata Fresca is a house specialty that offers a sophisticated take on traditional lemonade. We use freshly squeezed Sicilian lemons known for their intense aroma and balanced sweet-tart flavor. The lemon juice is mixed with filtered water and lightly sweetened with locally sourced honey, then infused with fresh basil leaves for an herbal note that elevates this refreshing beverage. Served over ice with a garnish of lemon wheel and basil sprig, it's the perfect cooling drink for any time of day.",
+                features: ["Signature", "Refreshing"],
+                image: "https://images.unsplash.com/photo-1596097635121-14b8177be5aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80",
+                nutrition: {
+                    calories: 90,
+                    protein: 0,
+                    carbs: 22,
+                    fat: 0
+                },
+                ingredients: ["Fresh Lemons", "Filtered Water", "Honey", "Fresh Basil"],
+                customizeOptions: [
+                    {
+                        title: "Sweetness Level",
+                        type: "radio",
+                        options: [
+                            {name: "Regular Sweetness", price: 0},
+                            {name: "Less Sweet", price: 0},
+                            {name: "Unsweetened", price: 0}
+                        ]
+                    },
+                    {
+                        title: "Add-ons",
+                        type: "checkbox",
+                        options: [
+                            {name: "Mint Leaves", price: 1},
+                            {name: "Fresh Berries", price: 2},
+                            {name: "Cucumber Slices", price: 1}
+                        ]
+                    }
+                ]
+            }
+        ];
+
+        // AI Chat Responses
+        const aiResponses = {
+            "I'm vegetarian": "We have many delicious vegetarian options! I'd recommend our Risotto ai Funghi with wild mushrooms and truffle oil, or our signature Fettuccine Alfredo. For appetizers, both the Caprese di Bufala and Bruschetta Classica are excellent choices. Would you like me to tell you more about any of these dishes?",
+            
+            "Gluten-free options?": "Absolutely! We have several gluten-free options on our menu. Our Risotto ai Funghi is naturally gluten-free, as are the Caprese di Bufala and Insalata Mista. We can also prepare many of our pasta dishes with gluten-free pasta for an additional $3. The Melanzane alla Parmigiana (eggplant parmesan) is another excellent gluten-free main course. Would you like any specific recommendations?",
+            
+            "What's your signature dish?": "Our signature dish is definitely the Fettuccine Alfredo! It's our most requested item, featuring homemade fettuccine in a rich, creamy Parmesan sauce with a hint of nutmeg. The pasta is made fresh daily, and the sauce achieves the perfect balance of creaminess without being too heavy. It's simple Italian cooking at its finest, letting the quality ingredients shine. Would you like to know more about how we prepare it?",
+            
+            "I'm in the mood for pasta": "You've come to the right place! Our pasta selection includes our signature Fettuccine Alfredo with a creamy Parmesan sauce, classic Spaghetti al Pomodoro with San Marzano tomatoes, and seasonal Gnocchi alla Sorrentina with tomato sauce and fresh mozzarella. All our pasta is made in-house daily. Based on your preferences, I can suggest which might suit your taste best. Do you prefer creamy sauces or tomato-based ones?",
+            
+            "Something light please": "For something light and refreshing, I'd recommend our Insalata di Rucola with arugula, Parmigiano-Reggiano, pine nuts, and cherry tomatoes. The Insalata Mista is also an excellent choice with seasonal greens and a light balsamic vinaigrette. If you'd prefer something warm, the Spaghetti al Pomodoro is our lightest pasta dish, featuring a simple but flavorful tomato sauce. Would any of these appeal to you?"
+        };
+
+        // Global Variables
+        let currentItemId = null;
+        let quantity = 1;
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        mobileToggle.addEventListener('click', () => {
+            mobileToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            
+            if (mobileMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Menu Filter Functionality
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.getAttribute('data-filter');
+                
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                // Filter menu items
+                menuItems.forEach(item => {
+                    const category = item.getAttribute('data-category');
+                    
+                    if (filter === 'all' || filter === category) {
+                        item.style.display = 'block';
+                        // Add animation
+                        item.style.animation = 'none';
+                        void item.offsetWidth; // Trigger reflow
+                        item.style.animation = 'fadeIn 0.6s ease-out forwards';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Menu Item Click - Open Modal
+        menuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const itemId = parseInt(item.getAttribute('data-id'));
+                openMenuModal(itemId);
+            });
+        });
+
+        // Open Menu Modal Function
+        function openMenuModal(itemId) {
+            currentItemId = itemId;
+            const item = menuItemsData.find(item => item.id === itemId);
+            
+            if (!item) return;
+            
+            // Populate modal content
+            document.getElementById('modal-img').src = item.image;
+            document.getElementById('modal-img').alt = item.name;
+            document.getElementById('modal-title').textContent = item.name;
+            document.getElementById('modal-subtitle').textContent = item.features.join(' • ');
+            document.getElementById('modal-price').textContent = `$${item.price.toFixed(2)}`;
+            document.getElementById('modal-desc').textContent = item.description;
+            
+            // Nutrition info
+            const nutritionInfo = document.getElementById('nutrition-info');
+            nutritionInfo.innerHTML = '';
+            for (const [key, value] of Object.entries(item.nutrition)) {
+                nutritionInfo.innerHTML += `
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">${value}</div>
+                        <div class="nutrition-label">${key}</div>
+                    </div>
+                `;
+            }
+            
+            // Ingredients
+            const ingredientsList = document.getElementById('ingredients-list');
+            ingredientsList.innerHTML = '';
+            item.ingredients.forEach(ingredient => {
+                ingredientsList.innerHTML += `<span class="ingredient">${ingredient}</span>`;
+            });
+            
+            // Customize options
+            const customizeOptions = document.getElementById('customize-options');
+            customizeOptions.innerHTML = '';
+            item.customizeOptions.forEach(optionGroup => {
+                const groupHTML = `
+                    <div class="customize-group">
+                        <div class="customize-title">${optionGroup.title}</div>
+                        <div class="options-list">
+                            ${optionGroup.options.map((option, index) => `
+                                <div class="option-item">
+                                    <input type="${optionGroup.type}" 
+                                           id="${optionGroup.title.toLowerCase().replace(/\s+/g, '-')}-${index}" 
+                                           name="${optionGroup.title.toLowerCase().replace(/\s+/g, '-')}" 
+                                           value="${option.name}" 
+                                           data-price="${option.price}"
+                                           ${optionGroup.type === 'radio' && index === 0 ? 'checked' : ''}>
+                                    <label for="${optionGroup.title.toLowerCase().replace(/\s+/g, '-')}-${index}">
+                                        ${option.name} ${option.price > 0 ? `<span class="option-price">+$${option.price.toFixed(2)}</span>` : ''}
+                                    </label>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+                customizeOptions.innerHTML += groupHTML;
+            });
+            
+            // Reset quantity
+            quantity = 1;
+            document.getElementById('quantity-input').value = quantity;
+            
+            // Update total price
+            updateTotalPrice();
+            
+            // Show modal
+            menuModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close Menu Modal
+        modalClose.addEventListener('click', () => {
+            menuModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Quantity Controls
+        decreaseQuantityBtn.addEventListener('click', () => {
+            if (quantity > 1) {
+                quantity--;
+                quantityInput.value = quantity;
+                updateTotalPrice();
+            }
+        });
+
+        increaseQuantityBtn.addEventListener('click', () => {
+            if (quantity < 10) {
+                quantity++;
+                quantityInput.value = quantity;
+                updateTotalPrice();
+            }
+        });
+
+        quantityInput.addEventListener('change', () => {
+            const value = parseInt(quantityInput.value);
+            if (value < 1) {
+                quantity = 1;
+                quantityInput.value = quantity;
+            } else if (value > 10) {
+                quantity = 10;
+                quantityInput.value = quantity;
+            } else {
+                quantity = value;
+            }
+            updateTotalPrice();
+        });
+
+        // Update Total Price
+        function updateTotalPrice() {
+            if (!currentItemId) return;
+            
+            const item = menuItemsData.find(item => item.id === currentItemId);
+            if (!item) return;
+            
+            let basePrice = item.price;
+            
+            // Add prices from selected options
+            const checkedOptions = document.querySelectorAll('#customize-options input:checked');
+            checkedOptions.forEach(option => {
+                basePrice += parseFloat(option.getAttribute('data-price'));
+            });
+            
+            const total = basePrice * quantity;
+            document.getElementById('total-price').innerHTML = `Total: <span>$${total.toFixed(2)}</span>`;
+        }
+
+        // Customize Options Change - Update Price
+        document.addEventListener('change', (e) => {
+            if (e.target.closest('#customize-options')) {
+                updateTotalPrice();
+            }
+        });
+
+        // Add to Cart Button
+        addToCartBtn.addEventListener('click', () => {
+            if (!currentItemId) return;
+            
+            // Animation effect
+            addToCartBtn.classList.add('added');
+            setTimeout(() => {
+                addToCartBtn.classList.remove('added');
+            }, 1000);
+            
+            // In a real application, you would add the item to the cart here
+            // For now, we'll just close the modal after a brief delay
+            setTimeout(() => {
+                menuModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                
+                // Show a toast notification
+                const toast = document.createElement('div');
+                toast.classList.add('toast');
+                toast.innerHTML = '<i class="fas fa-check-circle"></i> Item added to cart';
+                document.body.appendChild(toast);
+                
+                setTimeout(() => {
+                    toast.classList.add('show');
+                }, 100);
+                
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                    setTimeout(() => {
+                        document.body.removeChild(toast);
+                    }, 300);
+                }, 3000);
+            }, 500);
+        });
+
+        // Add to Favorites Button
+        addToFavoritesBtn.addEventListener('click', () => {
+            // Animation effect
+            addToFavoritesBtn.innerHTML = '<i class="fas fa-heart"></i> Added to Favorites';
+            addToFavoritesBtn.style.backgroundColor = '#D4AF37';
+            addToFavoritesBtn.style.color = '#111';
+            
+            setTimeout(() => {
+                addToFavoritesBtn.innerHTML = 'Add to Favorites';
+                addToFavoritesBtn.style.backgroundColor = 'transparent';
+                addToFavoritesBtn.style.color = '#D4AF37';
+            }, 2000);
+        });
+
+        // AI Chat Functionality
+        suggestionChips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                const question = chip.textContent;
+                addUserMessage(question);
+                
+                setTimeout(() => {
+                    showTypingIndicator();
+                    
+                    setTimeout(() => {
+                        removeTypingIndicator();
+                        addAIMessage(aiResponses[question] || "I'm sorry, I don't have specific information about that. Would you like me to suggest something from our popular items?");
+                    }, 1500);
+                }, 300);
+            });
+        });
+
+        sendBtn.addEventListener('click', sendUserMessage);
+        aiInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendUserMessage();
+            }
+        });
+
+        function sendUserMessage() {
+            const message = aiInput.value.trim();
+            if (message === '') return;
+            
+            addUserMessage(message);
+            aiInput.value = '';
+            
+            setTimeout(() => {
+                showTypingIndicator();
+                
+                setTimeout(() => {
+                    removeTypingIndicator();
+                    
+                    // Check for keywords and provide appropriate responses
+                    if (message.toLowerCase().includes('vegetarian')) {
+                        addAIMessage(aiResponses["I'm vegetarian"]);
+                    } else if (message.toLowerCase().includes('gluten') || message.toLowerCase().includes('gluten-free')) {
+                        addAIMessage(aiResponses["Gluten-free options?"]);
+                    } else if (message.toLowerCase().includes('signature') || message.toLowerCase().includes('popular') || message.toLowerCase().includes('recommend')) {
+                        addAIMessage(aiResponses["What's your signature dish?"]);
+                    } else if (message.toLowerCase().includes('pasta')) {
+                        addAIMessage(aiResponses["I'm in the mood for pasta"]);
+                    } else if (message.toLowerCase().includes('light') || message.toLowerCase().includes('healthy')) {
+                        addAIMessage(aiResponses["Something light please"]);
+                    } else {
+                        addAIMessage("That's a great question! Based on what you're asking, I might recommend our signature Fettuccine Alfredo or perhaps the seasonal Gnocchi alla Sorrentina. Both are very popular choices. Would you like me to tell you more about any specific dishes on our menu?");
+                    }
+                }, 1500);
+            }, 300);
+        }
+
+        function addUserMessage(message) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('chat-message', 'user-message');
+            messageElement.textContent = message;
+            aiChatBody.appendChild(messageElement);
+            scrollToBottom();
+        }
+
+        function addAIMessage(message) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('chat-message', 'ai-message');
+            messageElement.textContent = message;
+            aiChatBody.appendChild(messageElement);
+            scrollToBottom();
+        }
+
+        function showTypingIndicator() {
+            const indicator = document.createElement('div');
+            indicator.classList.add('typing-indicator');
+            indicator.innerHTML = `
+                <span class="typing-dot"></span>
+                <span class="typing-dot"></span>
+                <span class="typing-dot"></span>
+            `;
+            indicator.id = 'typing-indicator';
+            aiChatBody.appendChild(indicator);
+            scrollToBottom();
+        }
+
+        function removeTypingIndicator() {
+            const indicator = document.getElementById('typing-indicator');
+            if (indicator) {
+                aiChatBody.removeChild(indicator);
+            }
+        }
+
+        function scrollToBottom() {
+            aiChatBody.scrollTop = aiChatBody.scrollHeight;
+        }
+
+        // Initialize the page
+        window.addEventListener('load', () => {
+            // Simulate filter animation on initial load
+            setTimeout(() => {
+                menuItems.forEach((item, index) => {
+                    item.style.animationDelay = `${index * 0.1}s`;
+                });
+            }, 100);
+        });
+
+        // Add event listener to customize options for price updates
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('#customize-options')) {
+                updateTotalPrice();
+            }
+        });
+
+        // Add toast notification styles
+        const style = document.createElement('style');
+        style.textContent = `
+            .toast {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background-color: #333;
+                color: #fff;
+                padding: 15px 25px;
+                border-radius: 30px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+                transform: translateY(100px);
+                opacity: 0;
+                transition: all 0.3s ease;
+                z-index: 9999;
+            }
+            
+            .toast.show {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            .toast i {
+                color: #D4AF37;
+            }
+            
+            .added {
+                animation: addedPulse 0.6s ease;
+            }
+            
+            @keyframes addedPulse {
+                0%, 100% {
+                    transform: scale(1);
+                }
+                50% {
+                    transform: scale(1.05);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
