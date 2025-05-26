@@ -702,6 +702,46 @@
             background-color: #D4AF37;
             color: #fff;
         }
+        
+                /* View Details Button */
+        .view-details-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: transparent;
+            color: #D4AF37;
+            border: 2px solid #D4AF37;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-top: 10px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .view-details-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background-color: #D4AF37;
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+
+        .view-details-btn:hover {
+            color: #111;
+        }
+
+        .view-details-btn:hover::before {
+            width: 100%;
+        }
 
         /* Menu Detail Modal */
         .menu-modal {
@@ -1656,6 +1696,7 @@
                             <span class="feature-tag">Vegetarian</span>
                             <span class="feature-tag">Locally Sourced</span>
                         </div>
+                        <button class="view-details-btn" data-id="1">View Details</button>
                     </div>
                 </div>
 
@@ -1671,6 +1712,7 @@
                             <span class="feature-tag">Vegetarian</span>
                             <span class="feature-tag">Signature Dish</span>
                         </div>
+                        <button class="view-details-btn" data-id="2">View Details</button>
                     </div>
                 </div>
 
@@ -1686,6 +1728,7 @@
                             <span class="feature-tag">Vegetarian</span>
                             <span class="feature-tag">Gluten-Free</span>
                         </div>
+                        <button class="view-details-btn" data-id="3">View Details</button>
                     </div>
                 </div>
 
@@ -1703,6 +1746,7 @@
                             <span class="feature-tag">Vegetarian</span>
                             <span class="feature-tag">House Special</span>
                         </div>
+                        <button class="view-details-btn" data-id="4">View Details</button>
                     </div>
                 </div>
 
@@ -1718,6 +1762,7 @@
                             <span class="feature-tag">Vegan</span>
                             <span class="feature-tag">Classic</span>
                         </div>
+                        <button class="view-details-btn" data-id="5">View Details</button>
                     </div>
                 </div>
 
@@ -1733,6 +1778,7 @@
                             <span class="feature-tag">Vegetarian</span>
                             <span class="feature-tag">Gluten-Free</span>
                         </div>
+                        <button class="view-details-btn" data-id="6">View Details</button>
                     </div>
                 </div>
 
@@ -1749,6 +1795,7 @@
                             <span class="feature-tag">Vegetarian</span>
                             <span class="feature-tag">Traditional</span>
                         </div>
+                        <button class="view-details-btn" data-id="7">View Details</button>
                     </div>
                 </div>
 
@@ -1765,6 +1812,7 @@
                             <span class="feature-tag">Vegetarian</span>
                             <span class="feature-tag">Handmade</span>
                         </div>
+                        <button class="view-details-btn" data-id="8">View Details</button>
                     </div>
                 </div>
 
@@ -1781,6 +1829,7 @@
                             <span class="feature-tag">Vegan</span>
                             <span class="feature-tag">Gluten-Free</span>
                         </div>
+                        <button class="view-details-btn" data-id="9">View Details</button>
                     </div>
                 </div>
 
@@ -1796,6 +1845,7 @@
                             <span class="feature-tag">Vegetarian</span>
                             <span class="feature-tag">Light</span>
                         </div>
+                        <button class="view-details-btn" data-id="10">View Details</button>
                     </div>
                 </div>
 
@@ -1813,6 +1863,7 @@
                             <span class="feature-tag">Vegetarian</span>
                             <span class="feature-tag">Classic</span>
                         </div>
+                        <button class="view-details-btn" data-id="11">View Details</button>
                     </div>
                 </div>
 
@@ -1828,6 +1879,7 @@
                             <span class="feature-tag">Vegetarian</span>
                             <span class="feature-tag">Gluten-Free</span>
                         </div>
+                        <button class="view-details-btn" data-id="12">View Details</button>
                     </div>
                 </div>
 
@@ -1844,6 +1896,7 @@
                             <span class="feature-tag">Sparkling</span>
                             <span class="feature-tag">Refreshing</span>
                         </div>
+                        <button class="view-details-btn" data-id="13">View Details</button>
                     </div>
                 </div>
 
@@ -1859,6 +1912,7 @@
                             <span class="feature-tag">Vegan</span>
                             <span class="feature-tag">Seasonal</span>
                         </div>
+                        <button class="view-details-btn" data-id="14">View Details</button>
                     </div>
                 </div>
 
@@ -1875,6 +1929,7 @@
                             <span class="feature-tag">Signature</span>
                             <span class="feature-tag">Refreshing</span>
                         </div>
+                        <button class="view-details-btn" data-id="15">View Details</button>
                     </div>
                 </div>
             </div>
