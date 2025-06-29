@@ -8,7 +8,7 @@ def about(request):
     return render(request, 'lfpabout.html')
 
 def menu(request):
-    return render(request, 'lfpfixedmenu.html')
+    return render(request, 'newmenu3.html')
 
 def sustainability(request):
     return render(request, 'sustainability.html')   
